@@ -1,0 +1,23 @@
+COLUMN TABLE CatalogService_PAN_PRICE_DETAILS_drafts (
+  pdkey NVARCHAR(36) NOT NULL,
+  Proposed_Vendor_Code NVARCHAR(5000) NULL,
+  PAN_Number NVARCHAR(5000) NULL,
+  Item_Code NVARCHAR(5000) NULL,
+  HSN_OR_SAC_Code NVARCHAR(5000) NULL,
+  extendedPrice NVARCHAR(5000) NULL,
+  Item_Short_Description NVARCHAR(5000) NULL,
+  UOM NVARCHAR(5000) NULL,
+  Quantity NVARCHAR(5000) NULL,
+  Unit_Price NVARCHAR(5000) NULL,
+  Amount NVARCHAR(5000) NULL,
+  Indian_Tax_PER NVARCHAR(5000) NULL,
+  Quantity_Over_Delivery_Tolerance NVARCHAR(5000) NULL,
+  IsActiveEntity BOOLEAN,
+  HasActiveEntity BOOLEAN,
+  HasDraftEntity BOOLEAN,
+  DraftAdministrativeData_DraftUUID NVARCHAR(36) NOT NULL,
+  PRIMARY KEY(pdkey)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_vendor_data_drafts AS pdtovend ON (pdtovend.Proposed_Vendor_Code = Proposed_Vendor_Code AND PAN_Number = pdtovend.PAN_Number),
+  MANY TO ONE JOIN CatalogService_DraftAdministrativeData AS DraftAdministrativeData ON (DraftAdministrativeData.DraftUUID = DraftAdministrativeData_DraftUUID)
+)

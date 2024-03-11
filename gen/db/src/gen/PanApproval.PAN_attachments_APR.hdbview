@@ -1,0 +1,16 @@
+VIEW PanApproval_PAN_attachments_APR AS SELECT
+  PAN_attachments_0.ID,
+  PAN_attachments_0.createdAt,
+  PAN_attachments_0.createdBy,
+  PAN_attachments_0.modifiedAt,
+  PAN_attachments_0.modifiedBy,
+  PAN_attachments_0.PAN_Number,
+  PAN_attachments_0.content,
+  PAN_attachments_0.mediaType,
+  PAN_attachments_0.fileName,
+  PAN_attachments_0.size,
+  PAN_attachments_0.url
+FROM proj_schema_PAN_attachments AS PAN_attachments_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN PanApproval_PAN_Details_APR AS pdftotab1 ON (pdftotab1.PAN_Number = PAN_Number)
+)

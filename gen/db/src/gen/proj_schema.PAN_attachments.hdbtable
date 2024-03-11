@@ -1,0 +1,16 @@
+COLUMN TABLE proj_schema_PAN_attachments (
+  ID NVARCHAR(36) NOT NULL,
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  content BLOB,
+  mediaType NVARCHAR(5000),
+  fileName NVARCHAR(5000),
+  size INTEGER,
+  url NVARCHAR(5000),
+  PRIMARY KEY(ID, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN proj_schema_PAN_Details AS pdftotab1 ON (pdftotab1.PAN_Number = PAN_Number)
+)

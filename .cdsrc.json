@@ -1,0 +1,15 @@
+{
+    "odata": {
+        "flavor": "x4"
+      },
+      "requires": {
+        "iflow1": {
+          "kind": "rest",
+          "timeout":"",
+          "credentials": {
+            "url": "https://tata-projects-limited-tpl-ariba-uat-dzu885iy-tpl-aruat-48c5f432.cfapps.eu10-004.hana.ondemand.com"
+          }
+        }
+    } 
+    
+}

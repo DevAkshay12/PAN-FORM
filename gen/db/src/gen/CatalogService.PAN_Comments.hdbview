@@ -1,0 +1,14 @@
+VIEW CatalogService_PAN_Comments AS SELECT
+  PAN_Comments_0.createdAt,
+  PAN_Comments_0.createdBy,
+  PAN_Comments_0.modifiedAt,
+  PAN_Comments_0.modifiedBy,
+  PAN_Comments_0.idd,
+  PAN_Comments_0.PAN_Number,
+  PAN_Comments_0."USER",
+  PAN_Comments_0.Comments,
+  PAN_Comments_0.status
+FROM proj_schema_PAN_Comments AS PAN_Comments_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_tab1 AS comtotab1 ON (comtotab1.PAN_Number = PAN_Number)
+)

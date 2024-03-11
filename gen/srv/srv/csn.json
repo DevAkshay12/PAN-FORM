@@ -1,0 +1,6126 @@
+{
+  "namespace": "proj_schema",
+  "definitions": {
+    "proj_schema.PAN_Details": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String",
+          "default": {
+            "val": "def"
+          }
+        },
+        "SBG": {
+          "type": "cds.String"
+        },
+        "SBU": {
+          "type": "cds.String"
+        },
+        "BUORPurchasing_Group": {
+          "type": "cds.String"
+        },
+        "Plant_Code": {
+          "type": "cds.String"
+        },
+        "Project_Description": {
+          "type": "cds.String"
+        },
+        "PR_NumberBKTsBKT": {
+          "type": "cds.String"
+        },
+        "Subject_of_ProposalOROrder": {
+          "type": "cds.String"
+        },
+        "Previous_PAN_References": {
+          "type": "cds.String"
+        },
+        "Split_OrderORNo_of_vendors": {
+          "type": "cds.String"
+        },
+        "SOP_Type": {
+          "type": "cds.String"
+        },
+        "Order_Type_OR_Document_tyFuuidpe": {
+          "type": "cds.String"
+        },
+        "Asset_Type": {
+          "type": "cds.String"
+        },
+        "Nature_of_Transaction": {
+          "type": "cds.String"
+        },
+        "Order_Location_OR_Plant": {
+          "type": "cds.String"
+        },
+        "Base_line_spend": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Final_proposed_Value": {
+          "type": "cds.String"
+        },
+        "Savings_achieved_btw_initial_and_final_quote": {
+          "type": "cds.String"
+        },
+        "Savings_against_base_line_spend_of_RFP": {
+          "type": "cds.String"
+        },
+        "Number_of_Vendors_Shortlisted_for_RFP": {
+          "type": "cds.String"
+        },
+        "Number_of_Vendors_Technically_Qualified": {
+          "type": "cds.String"
+        },
+        "Required_at_Site_Date": {
+          "type": "cds.String"
+        },
+        "RFP_Number": {
+          "type": "cds.String"
+        },
+        "RFP_Publish_Date": {
+          "type": "cds.String"
+        },
+        "Time_Taken_for_FinalizationDASHIn_DAYS": {
+          "type": "cds.String"
+        },
+        "status": {
+          "type": "cds.String"
+        },
+        "statusInd": {
+          "type": "cds.Integer"
+        },
+        "created_by": {
+          "type": "cds.String"
+        },
+        "task_id": {
+          "type": "cds.String"
+        },
+        "type": {
+          "type": "cds.String"
+        },
+        "status_a": {
+          "type": "cds.String"
+        },
+        "switch_control": {
+          "type": "cds.Boolean",
+          "default": {
+            "val": false
+          }
+        },
+        "ProjectId": {
+          "type": "cds.String"
+        },
+        "number_of_vendors_invited": {
+          "type": "cds.String"
+        },
+        "total_levels_of_approval": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "Current_level_of_approval": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "Sap_workitem_id": {
+          "type": "cds.String"
+        },
+        "Comments": {
+          "type": "cds.LargeString"
+        },
+        "submitted_by": {
+          "type": "cds.String"
+        },
+        "submitted_date": {
+          "type": "cds.String"
+        },
+        "tab1totab2": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_WEB_EVENT",
+          "on": [
+            {
+              "ref": [
+                "tab1totab2",
+                "tab2totab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1totab3": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_TYPE",
+          "on": [
+            {
+              "ref": [
+                "tab1totab3",
+                "tab3totab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1toWORKFLOW_HISTORY": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_WORKFLOW_HISTORY",
+          "on": [
+            {
+              "ref": [
+                "tab1toWORKFLOW_HISTORY",
+                "WORKFLOW_HISTORYtotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1topdf": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_attachments",
+          "on": [
+            {
+              "ref": [
+                "tab1topdf",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        },
+        "tab1tovendor_data": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_vendor_data",
+          "on": [
+            {
+              "ref": [
+                "tab1tovendor_data",
+                "vendor_datatotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1tocom": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_Comments",
+          "on": [
+            {
+              "ref": [
+                "tab1tocom",
+                "comtotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_WEB_EVENT": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "eventNo": {
+          "type": "cds.String"
+        },
+        "number": {
+          "type": "cds.String"
+        },
+        "date": {
+          "type": "cds.String"
+        },
+        "numberOfVendorsParticipated": {
+          "type": "cds.String"
+        },
+        "l1AmountObtained": {
+          "type": "cds.String"
+        },
+        "tab2totab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_Details",
+          "on": [
+            {
+              "ref": [
+                "tab2totab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_TYPE": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "typeNo": {
+          "type": "cds.String"
+        },
+        "required": {
+          "type": "cds.String"
+        },
+        "submittedOn": {
+          "type": "cds.String"
+        },
+        "receivedOn": {
+          "type": "cds.String"
+        },
+        "timeTakenForApproval": {
+          "type": "cds.String"
+        },
+        "tab3totab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_Details",
+          "on": [
+            {
+              "ref": [
+                "tab3totab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_vendor_data": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Awarded_Vendor": {
+          "type": "cds.String"
+        },
+        "Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Vendor_Location": {
+          "type": "cds.String"
+        },
+        "Technically_Approved": {
+          "type": "cds.String"
+        },
+        "Client_Approved": {
+          "type": "cds.String"
+        },
+        "Original_quote": {
+          "type": "cds.String"
+        },
+        "Final_Quote": {
+          "type": "cds.String"
+        },
+        "Order_amount_OR_Split_order_amount": {
+          "type": "cds.String"
+        },
+        "Discount_Amount": {
+          "type": "cds.String"
+        },
+        "Discount_percentage": {
+          "type": "cds.String"
+        },
+        "Rank": {
+          "type": "cds.String"
+        },
+        "Proposed_Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Supplier_Origin_State": {
+          "type": "cds.String"
+        },
+        "Destination_State_BKTShipDASHto_LocationBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_GST_Number": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH1": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH2": {
+          "type": "cds.String"
+        },
+        "Technical_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Commercial_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Vendor_References_to_be_displayed_in_Order": {
+          "type": "cds.String"
+        },
+        "Shortlisted_Vendors_Response_summary": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Incoterms": {
+          "type": "cds.String"
+        },
+        "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC": {
+          "type": "cds.String"
+        },
+        "Details_of_deviated_or_better_terms_agreed_with_the_Vendor": {
+          "type": "cds.String"
+        },
+        "Market_Scenario_and_Demand": {
+          "type": "cds.String"
+        },
+        "Companys_Position_and_Market_dynamics_of_this_purchase": {
+          "type": "cds.String"
+        },
+        "Should_Be_Cost_estimated": {
+          "type": "cds.String"
+        },
+        "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal": {
+          "type": "cds.String"
+        },
+        "Price_Escalation_Agreed_if_any": {
+          "type": "cds.String"
+        },
+        "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor": {
+          "type": "cds.String"
+        },
+        "Transportation": {
+          "type": "cds.String"
+        },
+        "Logistics_Cost": {
+          "type": "cds.String"
+        },
+        "Delivery_Schedule": {
+          "type": "cds.String"
+        },
+        "Tax_Details": {
+          "type": "cds.String"
+        },
+        "Additional_Remarks": {
+          "type": "cds.String"
+        },
+        "ABG": {
+          "type": "cds.String"
+        },
+        "ABG_Value": {
+          "type": "cds.String"
+        },
+        "CPBG": {
+          "type": "cds.String"
+        },
+        "CPBG_Value": {
+          "type": "cds.String"
+        },
+        "Scope_and_Responsibilities": {
+          "type": "cds.LargeString"
+        },
+        "Commercial_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Compliance_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Others": {
+          "type": "cds.LargeString"
+        },
+        "vendtovenr": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_vendor_response",
+          "on": [
+            {
+              "ref": [
+                "vendtovenr",
+                "venrtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendtoptd": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_PAYMENT_TERM_DETAILS",
+          "on": [
+            {
+              "ref": [
+                "vendtoptd",
+                "ptdtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendtopd": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "proj_schema.PAN_PRICE_DETAILS",
+          "on": [
+            {
+              "ref": [
+                "vendtopd",
+                "pdtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendor_datatotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_Details",
+          "on": [
+            {
+              "ref": [
+                "vendor_datatotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_vendor_response": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Proposed_Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Supplier_Origin_State": {
+          "type": "cds.String"
+        },
+        "Destination_State_BKTShipDASHto_LocationBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_GST_Number": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Date": {
+          "type": "cds.Date"
+        },
+        "Vendor_PE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH1": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH2": {
+          "type": "cds.String"
+        },
+        "Technical_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Commercial_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Vendor_References_to_be_displayed_in_Order": {
+          "type": "cds.String"
+        },
+        "Shortlisted_Vendors_Response_summary": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Incoterms": {
+          "type": "cds.String"
+        },
+        "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC": {
+          "type": "cds.String"
+        },
+        "Details_of_deviated_or_better_terms_agreed_with_the_Vendor": {
+          "type": "cds.String"
+        },
+        "Market_Scenario_and_Demand": {
+          "type": "cds.String"
+        },
+        "Companys_Position_and_Market_dynamics_of_this_purchase": {
+          "type": "cds.String"
+        },
+        "Should_Be_Cost_estimated": {
+          "type": "cds.String"
+        },
+        "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal": {
+          "type": "cds.String"
+        },
+        "Price_Escalation_Agreed_if_any": {
+          "type": "cds.String"
+        },
+        "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor": {
+          "type": "cds.String"
+        },
+        "Transportation": {
+          "type": "cds.String"
+        },
+        "Logistics_Cost": {
+          "type": "cds.String"
+        },
+        "Delivery_Schedule": {
+          "type": "cds.String"
+        },
+        "Tax_Details": {
+          "type": "cds.String"
+        },
+        "Additional_Remarks": {
+          "type": "cds.String"
+        },
+        "ABG": {
+          "type": "cds.String"
+        },
+        "ABG_Value": {
+          "type": "cds.String"
+        },
+        "CPBG": {
+          "type": "cds.String"
+        },
+        "CPBG_Value": {
+          "type": "cds.String"
+        },
+        "Scope_and_Responsibilities": {
+          "type": "cds.LargeString"
+        },
+        "Commercial_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Compliance_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Others": {
+          "type": "cds.LargeString"
+        },
+        "venrtovend": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_vendor_data",
+          "keys": [
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_PAYMENT_TERM_DETAILS": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "ptdkey": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Proposed_Vendor_Code": {
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "type": "cds.String"
+        },
+        "iddd": {
+          "type": "cds.String"
+        },
+        "slNo": {
+          "type": "cds.Integer"
+        },
+        "Payment_methord": {
+          "type": "cds.String",
+          "default": {
+            "val": "RTGS payment"
+          }
+        },
+        "Percentage": {
+          "type": "cds.String"
+        },
+        "Description": {
+          "type": "cds.String"
+        },
+        "Due_date": {
+          "type": "cds.String"
+        },
+        "Mandatory_Documents_OR_Submissions": {
+          "type": "cds.String"
+        },
+        "To_be_certified_in_Company": {
+          "type": "cds.String"
+        },
+        "ptdtovend": {
+          "type": "cds.Association",
+          "target": "proj_schema.PAN_vendor_data",
+          "on": [
+            {
+              "ref": [
+                "ptdtovend",
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ptdtovend",
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_attachments": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "includes": [
+        "cuid",
+        "managed"
+      ],
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "content": {
+          "@Core.MediaType": {
+            "=": "mediaType"
+          },
+          "type": "cds.LargeBinary"
+        },
+        "mediaType": {
+          "@Core.IsMediaType": true,
+          "type": "cds.String"
+        },
+        "fileName": {
+          "type": "cds.String"
+        },
+        "size": {
+          "type": "cds.Integer"
+        },
+        "url": {
+          "type": "cds.String"
+        },
+        "pdftotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_Details",
+          "on": [
+            {
+              "ref": [
+                "pdftotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_WORKFLOW_HISTORY": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Employee_ID": {
+          "type": "cds.String"
+        },
+        "level": {
+          "type": "cds.String"
+        },
+        "Approved_by": {
+          "type": "cds.String"
+        },
+        "Employee_Name": {
+          "type": "cds.String"
+        },
+        "Title": {
+          "type": "cds.String"
+        },
+        "Notification_Status": {
+          "type": "cds.String"
+        },
+        "Result": {
+          "type": "cds.String"
+        },
+        "Begin_DateAND_Time": {
+          "type": "cds.String"
+        },
+        "End_DateAND_Time": {
+          "type": "cds.String"
+        },
+        "Days_Taken": {
+          "type": "cds.String"
+        },
+        "Remarks": {
+          "type": "cds.String"
+        },
+        "WORKFLOW_HISTORYtotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_Details",
+          "on": [
+            {
+              "ref": [
+                "WORKFLOW_HISTORYtotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_PRICE_DETAILS": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "pdkey": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Proposed_Vendor_Code": {
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "type": "cds.String"
+        },
+        "Item_Code": {
+          "type": "cds.String"
+        },
+        "HSN_OR_SAC_Code": {
+          "type": "cds.String"
+        },
+        "extendedPrice": {
+          "type": "cds.String"
+        },
+        "Item_Short_Description": {
+          "type": "cds.String"
+        },
+        "UOM": {
+          "type": "cds.String"
+        },
+        "Quantity": {
+          "type": "cds.String"
+        },
+        "Unit_Price": {
+          "type": "cds.String"
+        },
+        "Amount": {
+          "type": "cds.String"
+        },
+        "Indian_Tax_PER": {
+          "type": "cds.String"
+        },
+        "Quantity_Over_Delivery_Tolerance": {
+          "type": "cds.String"
+        },
+        "pdtovend": {
+          "type": "cds.Association",
+          "target": "proj_schema.PAN_vendor_data",
+          "on": [
+            {
+              "ref": [
+                "pdtovend",
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "pdtovend",
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.PAN_Payment_Method_Drop": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Payment_method": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "proj_schema.PAN_Comments": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "idd": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "user": {
+          "type": "cds.String"
+        },
+        "Comments": {
+          "type": "cds.LargeString"
+        },
+        "status": {
+          "type": "cds.String"
+        },
+        "comtotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "proj_schema.PAN_Details",
+          "on": [
+            {
+              "ref": [
+                "comtotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "proj_schema.vendorTaxDetails": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Item_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "idd": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        },
+        "value": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "CatalogService": {
+      "@source": "srv/service.cds",
+      "kind": "service",
+      "@requires": "authenticated-user"
+    },
+    "CatalogService.tab1": {
+      "kind": "entity",
+      "@odata.draft.enabled": true,
+      "@UI.CreateHidden": true,
+      "@UI.DeleteHidden": true,
+      "@UI.LineItem": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "PAN_Number"
+          },
+          "Label": "PAN Number"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "SBG"
+          },
+          "Label": "SBG"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "SBU"
+          },
+          "Label": "SBU"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "BUORPurchasing_Group"
+          },
+          "Label": "BU/Purchasing Group"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Plant_Code"
+          },
+          "Label": "Plant Code"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "status"
+          },
+          "Label": "Status",
+          "Criticality": {
+            "=": "statusInd"
+          },
+          "CriticalityRepresentation": {
+            "#": "WithIcon"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#tableView.$Type": "UI.SelectionPresentationVariantType",
+      "@UI.SelectionPresentationVariant#tableView.PresentationVariant.$Type": "UI.PresentationVariantType",
+      "@UI.SelectionPresentationVariant#tableView.PresentationVariant.Visualizations": [
+        "@UI.LineItem"
+      ],
+      "@UI.SelectionPresentationVariant#tableView.SelectionVariant.$Type": "UI.SelectionVariantType",
+      "@UI.SelectionPresentationVariant#tableView.SelectionVariant.SelectOptions": [],
+      "@UI.SelectionPresentationVariant#tableView.Text": "Table View",
+      "@UI.LineItem#tableView": [],
+      "@UI.SelectionPresentationVariant#tableView1.$Type": "UI.SelectionPresentationVariantType",
+      "@UI.SelectionPresentationVariant#tableView1.PresentationVariant.$Type": "UI.PresentationVariantType",
+      "@UI.SelectionPresentationVariant#tableView1.PresentationVariant.Visualizations": [
+        "@UI.LineItem#tableView"
+      ],
+      "@UI.SelectionPresentationVariant#tableView1.SelectionVariant.$Type": "UI.SelectionVariantType",
+      "@UI.SelectionPresentationVariant#tableView1.SelectionVariant.SelectOptions": [],
+      "@UI.SelectionPresentationVariant#tableView1.Text": "Table View 1",
+      "@UI.HeaderInfo.TypeName": "PAN Details",
+      "@UI.HeaderInfo.TypeNamePlural": "PAN Details",
+      "@UI.HeaderInfo.Title.$Type": "UI.DataField",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "PAN_Number"
+      },
+      "@UI.Facets": [
+        {
+          "$Type": "UI.CollectionFacet",
+          "Label": "General Details",
+          "ID": "GeneralDetails1",
+          "Facets": [
+            {
+              "$Type": "UI.ReferenceFacet",
+              "ID": "GeneralDetails",
+              "Target": "@UI.FieldGroup#GeneralDetails"
+            },
+            {
+              "$Type": "UI.ReferenceFacet",
+              "Label": "WEB EVENT",
+              "ID": "_",
+              "Target": "tab1totab2/@UI.LineItem#_"
+            },
+            {
+              "$Type": "UI.ReferenceFacet",
+              "Label": "TYPE",
+              "ID": "TYPE",
+              "Target": "tab1totab3/@UI.LineItem#TYPE"
+            }
+          ]
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Vendor Details",
+          "ID": "VendorData",
+          "Target": "tab1tovendor_data/@UI.LineItem#VendorData"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Justification",
+          "ID": "Justification",
+          "Target": "@UI.FieldGroup#Justification"
+        }
+      ],
+      "@UI.FieldGroup#GeneralDetails.$Type": "UI.FieldGroupType",
+      "@UI.FieldGroup#GeneralDetails.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "PAN_Number"
+          },
+          "Label": "PAN Number"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "SBG"
+          },
+          "Label": "SBG"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "SBU"
+          },
+          "Label": "SBU"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "BUORPurchasing_Group"
+          },
+          "Label": "BU/Purchasing Group"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Plant_Code"
+          },
+          "Label": "Plant Code"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Project_Description"
+          },
+          "Label": "Project Description"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "PR_NumberBKTsBKT"
+          },
+          "Label": "PR Number(s)"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Subject_of_ProposalOROrder"
+          },
+          "Label": "Subject of Proposal/Order"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Previous_PAN_References"
+          },
+          "Label": "Previous PAN References"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Split_OrderORNo_of_vendors"
+          },
+          "Label": "Split Order/No of vendors"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Order_Location_OR_Plant"
+          },
+          "Label": "Order Location / Plant"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Base_line_spend"
+          },
+          "Label": "Base line spend"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Project_CurrencyORBase_Currency"
+          },
+          "Label": "Project Currency/Base Currency"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Order_CurrencyORBid_currency"
+          },
+          "Label": "Order Currency/Bid currency"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Final_proposed_Value"
+          },
+          "Label": "Final proposed Value"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Savings_achieved_btw_initial_and_final_quote"
+          },
+          "Label": "Savings achieved btw initial and final quote"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Savings_against_base_line_spend_of_RFP"
+          },
+          "Label": "Savings against base line spend of RFP"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Number_of_Vendors_Shortlisted_for_RFP"
+          },
+          "Label": "Number of Vendors Shortlisted for RFP"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Number_of_Vendors_Technically_Qualified"
+          },
+          "Label": "Number of Vendors Technically Qualified"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Required_at_Site_Date"
+          },
+          "Label": "Required at Site Date"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "RFP_Number"
+          },
+          "Label": "RFP Number"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "RFP_Publish_Date"
+          },
+          "Label": "RFP Publish Date"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Time_Taken_for_FinalizationDASHIn_DAYS"
+          },
+          "Label": "Time Taken for Finalization-In DAYS"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "status"
+          },
+          "Label": "status",
+          "@UI.Hidden": true
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "number_of_vendors_invited"
+          },
+          "Label": "Number Of Vendors Invited"
+        }
+      ],
+      "@Common.SemanticKey": [
+        {
+          "=": "PAN_Number"
+        }
+      ],
+      "@UI.FieldGroup#Justification.$Type": "UI.FieldGroupType",
+      "@UI.FieldGroup#Justification.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Comments"
+          },
+          "Label": "Comments"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_Details"
+          ]
+        },
+        "where": [
+          {
+            "ref": [
+              "created_by"
+            ]
+          },
+          "=",
+          {
+            "ref": [
+              "$user",
+              "id"
+            ]
+          },
+          "and",
+          {
+            "func": "ltrim",
+            "args": [
+              {
+                "func": "rtrim",
+                "args": [
+                  {
+                    "ref": [
+                      "task_id"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "!=",
+          {
+            "val": ""
+          }
+        ]
+      },
+      "elements": {
+        "PAN_Number": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "key": true,
+          "type": "cds.String",
+          "default": {
+            "val": "def"
+          }
+        },
+        "SBG": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "SBU": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "BUORPurchasing_Group": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Plant_Code": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Project_Description": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.String"
+        },
+        "PR_NumberBKTsBKT": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Subject_of_ProposalOROrder": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.String"
+        },
+        "Previous_PAN_References": {
+          "type": "cds.String"
+        },
+        "Split_OrderORNo_of_vendors": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "SOP_Type": {
+          "type": "cds.String"
+        },
+        "Order_Type_OR_Document_tyFuuidpe": {
+          "type": "cds.String"
+        },
+        "Asset_Type": {
+          "type": "cds.String"
+        },
+        "Nature_of_Transaction": {
+          "type": "cds.String"
+        },
+        "Order_Location_OR_Plant": {
+          "type": "cds.String"
+        },
+        "Base_line_spend": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Final_proposed_Value": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Savings_achieved_btw_initial_and_final_quote": {
+          "@Common.FieldControl": {
+            "#": "Optional"
+          },
+          "type": "cds.String"
+        },
+        "Savings_against_base_line_spend_of_RFP": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Number_of_Vendors_Shortlisted_for_RFP": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Number_of_Vendors_Technically_Qualified": {
+          "type": "cds.String"
+        },
+        "Required_at_Site_Date": {
+          "type": "cds.String"
+        },
+        "RFP_Number": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "RFP_Publish_Date": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Time_Taken_for_FinalizationDASHIn_DAYS": {
+          "type": "cds.String"
+        },
+        "status": {
+          "type": "cds.String"
+        },
+        "statusInd": {
+          "type": "cds.Integer"
+        },
+        "created_by": {
+          "type": "cds.String"
+        },
+        "task_id": {
+          "type": "cds.String"
+        },
+        "type": {
+          "type": "cds.String"
+        },
+        "status_a": {
+          "type": "cds.String"
+        },
+        "switch_control": {
+          "type": "cds.Boolean",
+          "default": {
+            "val": false
+          }
+        },
+        "ProjectId": {
+          "type": "cds.String"
+        },
+        "number_of_vendors_invited": {
+          "type": "cds.String"
+        },
+        "total_levels_of_approval": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "Current_level_of_approval": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "Sap_workitem_id": {
+          "type": "cds.String"
+        },
+        "Comments": {
+          "@UI.MultiLineText": true,
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.LargeString"
+        },
+        "submitted_by": {
+          "type": "cds.String"
+        },
+        "submitted_date": {
+          "type": "cds.String"
+        },
+        "tab1totab2": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.tab2",
+          "on": [
+            {
+              "ref": [
+                "tab1totab2",
+                "tab2totab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1totab3": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.tab3",
+          "on": [
+            {
+              "ref": [
+                "tab1totab3",
+                "tab3totab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1toWORKFLOW_HISTORY": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.WORKFLOW_HISTORY",
+          "on": [
+            {
+              "ref": [
+                "tab1toWORKFLOW_HISTORY",
+                "WORKFLOW_HISTORYtotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1topdf": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.attachments",
+          "on": [
+            {
+              "ref": [
+                "tab1topdf",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        },
+        "tab1tovendor_data": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.vendor_data",
+          "on": [
+            {
+              "ref": [
+                "tab1tovendor_data",
+                "vendor_datatotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1tocom": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.PAN_Comments",
+          "on": [
+            {
+              "ref": [
+                "tab1tocom",
+                "comtotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.tab2": {
+      "kind": "entity",
+      "@UI.LineItem#_": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "eventNo"
+          },
+          "Label": "Event No"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "number"
+          },
+          "Label": "Doc ID"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "date"
+          },
+          "Label": "DATE"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "numberOfVendorsParticipated"
+          },
+          "Label": "Number Of Vendors Participated"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "l1AmountObtained"
+          },
+          "Label": "L1 Amount Obtained"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_WEB_EVENT"
+          ]
+        }
+      },
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "eventNo": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "number": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "date": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "numberOfVendorsParticipated": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "l1AmountObtained": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "tab2totab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.tab1",
+          "on": [
+            {
+              "ref": [
+                "tab2totab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.tab3": {
+      "kind": "entity",
+      "@UI.LineItem#TYPE": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "typeNo"
+          },
+          "Label": "Type"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "required"
+          },
+          "Label": "Required"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "submittedOn"
+          },
+          "Label": "Submitted on"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "receivedOn"
+          },
+          "Label": "Received on"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "timeTakenForApproval"
+          },
+          "Label": "Time Taken for Approval"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_TYPE"
+          ]
+        }
+      },
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "typeNo": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "required": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "submittedOn": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "receivedOn": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "timeTakenForApproval": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "tab3totab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.tab1",
+          "on": [
+            {
+              "ref": [
+                "tab3totab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.vendor_data": {
+      "kind": "entity",
+      "@UI.CreateHidden": true,
+      "@UI.DeleteHidden": true,
+      "@UI.LineItem#VendorData": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Awarded_Vendor"
+          },
+          "Label": "Awarded Vendor"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Name"
+          },
+          "Label": "Vendor Name"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Original_quote"
+          },
+          "Label": "Original quote"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Final_Quote"
+          },
+          "Label": "Final Quote"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Location"
+          },
+          "Label": "Awarded Value"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Technically_Approved"
+          },
+          "Label": "Technically Approved"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Order_amount_OR_Split_order_amount"
+          },
+          "Label": "Order amount OR Split order amount"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Discount_Amount"
+          },
+          "Label": "Discount Amount"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Discount_percentage"
+          },
+          "Label": "Discount percentage"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Rank"
+          },
+          "Label": "Rank"
+        }
+      ],
+      "@UI.HeaderInfo.TypeName": "Vendor Details",
+      "@UI.HeaderInfo.TypeNamePlural": "Vendor Details",
+      "@UI.HeaderInfo.Title.$Type": "UI.DataField",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "Proposed_Vendor_Code"
+      },
+      "@UI.HeaderInfo.Description.$Type": "UI.DataField",
+      "@UI.HeaderInfo.Description.Value": {
+        "=": "Vendor_Name"
+      },
+      "@UI.Facets": [
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Vendor Response",
+          "ID": "VendorResponse",
+          "Target": "@UI.FieldGroup#VendorResponse"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Terms and Conditions Compared with",
+          "ID": "TermsandConditionsComparedwith",
+          "Target": "@UI.FieldGroup#TermsandConditionsComparedwith"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Payment Term Details",
+          "ID": "PAYMENT_TERM_DETAILS",
+          "Target": "vendtoptd/@UI.LineItem#PAYMENT_TERM_DETAILS"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Others Terms And Conditions",
+          "ID": "OTHERSTERMSANDCONDITIONS",
+          "Target": "@UI.FieldGroup#OTHERSTERMSANDCONDITIONS"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Price Details",
+          "ID": "PRICEDETAILS",
+          "Target": "vendtopd/@UI.LineItem#PAN_PRICE_DETAILS"
+        }
+      ],
+      "@UI.FieldGroup#VendorResponse.$Type": "UI.FieldGroupType",
+      "@UI.FieldGroup#VendorResponse.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Proposed_Vendor_Name"
+          },
+          "Label": "Proposed Vendor Name"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Supplier_Origin_State"
+          },
+          "Label": "Supplier Origin State"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Destination_State_BKTShipDASHto_LocationBKT"
+          },
+          "Label": "Destination State (Ship-to Location)"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_GST_Number"
+          },
+          "Label": "Vendor GST Number"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_CE_Score"
+          },
+          "Label": "Vendor CE Score"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_CE_Date"
+          },
+          "Label": "Vendor CE Date"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_PE_Score"
+          },
+          "Label": "Vendor PE Score"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_PE_Date"
+          },
+          "Label": "Vendor PE Date"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Contact_PersonDASH1"
+          },
+          "Label": "Vendor Contact Person 1"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Contact_PersonDASH2"
+          },
+          "Label": "Vendor Contact Person 2"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Technical_Committee_who_cleared_the_proposal"
+          },
+          "Label": "Technical Committee who cleared the proposal"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Commercial_Committee_who_cleared_the_proposal"
+          },
+          "Label": "Commercial Committee who cleared the proposal"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_References_to_be_displayed_in_Order"
+          },
+          "Label": "Vendor References to be displayed in Order"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Incoterms"
+          },
+          "Label": "Incoterms"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Order_Value_BKTIn_Bid_CurrencyBKT"
+          },
+          "Label": "Order Value (In Bid Currency)"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Order_Value_BKTIn_Project_CurrencyBKT"
+          },
+          "Label": "Order Value (In Project Currency)"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Final_Quotation_Amount"
+          },
+          "Label": "Vendor Final Quotation Amount"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Final_Quotation_Date"
+          },
+          "Label": "Vendor Final Quotation Date"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Project_CurrencyORBase_Currency"
+          },
+          "Label": "Project Currency/Base Currency"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Order_CurrencyORBid_currency"
+          },
+          "Label": "Order Currency/Bid Currency"
+        }
+      ],
+      "@UI.FieldGroup#TermsandConditionsComparedwith.$Type": "UI.FieldGroupType",
+      "@UI.FieldGroup#TermsandConditionsComparedwith.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC"
+          },
+          "Label": "Number of Back to back Terms agreed with Vendor as per GPC / GCC"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Details_of_deviated_or_better_terms_agreed_with_the_Vendor"
+          },
+          "Label": "Details of deviated or better terms agreed with the Vendor"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Market_Scenario_and_Demand"
+          },
+          "Label": "Market Scenario and Demand"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Companys_Position_and_Market_dynamics_of_this_purchase"
+          },
+          "Label": "Companys Position and Market dynamics of this purchase"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Should_Be_Cost_estimated"
+          },
+          "Label": "Should Be Cost estimated"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal"
+          },
+          "Label": "Highlights of this proposal and Price Justification for this proposal"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Price_Escalation_Agreed_if_any"
+          },
+          "Label": "Price Escalation Agreed if any"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor"
+          },
+          "Label": "Particulars of any Free Service / Supply Guarantees / Warrant yfrom Vendor"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Transportation"
+          },
+          "Label": "Transportation"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Logistics_Cost"
+          },
+          "Label": "Logistics Cost"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Delivery_Schedule"
+          },
+          "Label": "Delivery Schedule"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Tax_Details"
+          },
+          "Label": "Tax Details"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Additional_Remarks"
+          },
+          "Label": "Additional Remarks"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ABG"
+          },
+          "Label": "ABG"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ABG_Value"
+          },
+          "Label": "ABG Value"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "CPBG"
+          },
+          "Label": "CPBG"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "CPBG_Value"
+          },
+          "Label": "CPBG Value"
+        }
+      ],
+      "@UI.FieldGroup#OTHERSTERMSANDCONDITIONS.$Type": "UI.FieldGroupType",
+      "@UI.FieldGroup#OTHERSTERMSANDCONDITIONS.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Scope_and_Responsibilities"
+          },
+          "Label": "Scope and Responsibilities"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Commercial_Terms"
+          },
+          "Label": "Commercial Terms"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Compliance_Terms"
+          },
+          "Label": "Compliance Terms"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Others"
+          },
+          "Label": "Others"
+        }
+      ],
+      "@UI.HeaderFacets": [],
+      "@UI.FieldGroup#VenorName.$Type": "UI.FieldGroupType",
+      "@UI.FieldGroup#VenorName.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Vendor_Name"
+          }
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_vendor_data"
+          ]
+        }
+      },
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Awarded_Vendor": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Vendor_Name": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Vendor_Location": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Technically_Approved": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.String"
+        },
+        "Client_Approved": {
+          "type": "cds.String"
+        },
+        "Original_quote": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Final_Quote": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Order_amount_OR_Split_order_amount": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Discount_Amount": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Discount_percentage": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Rank": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Proposed_Vendor_Name": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Supplier_Origin_State": {
+          "type": "cds.String"
+        },
+        "Destination_State_BKTShipDASHto_LocationBKT": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Vendor_GST_Number": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Vendor_CE_Score": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.String"
+        },
+        "Vendor_CE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH1": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH2": {
+          "type": "cds.String"
+        },
+        "Technical_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Commercial_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Vendor_References_to_be_displayed_in_Order": {
+          "type": "cds.String"
+        },
+        "Shortlisted_Vendors_Response_summary": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Incoterms": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC": {
+          "type": "cds.String"
+        },
+        "Details_of_deviated_or_better_terms_agreed_with_the_Vendor": {
+          "type": "cds.String"
+        },
+        "Market_Scenario_and_Demand": {
+          "type": "cds.String"
+        },
+        "Companys_Position_and_Market_dynamics_of_this_purchase": {
+          "type": "cds.String"
+        },
+        "Should_Be_Cost_estimated": {
+          "type": "cds.String"
+        },
+        "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal": {
+          "type": "cds.String"
+        },
+        "Price_Escalation_Agreed_if_any": {
+          "type": "cds.String"
+        },
+        "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor": {
+          "type": "cds.String"
+        },
+        "Transportation": {
+          "type": "cds.String"
+        },
+        "Logistics_Cost": {
+          "type": "cds.String"
+        },
+        "Delivery_Schedule": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          },
+          "type": "cds.String"
+        },
+        "Tax_Details": {
+          "type": "cds.String"
+        },
+        "Additional_Remarks": {
+          "type": "cds.String"
+        },
+        "ABG": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "ABG_Value": {
+          "type": "cds.String"
+        },
+        "CPBG": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "CPBG_Value": {
+          "type": "cds.String"
+        },
+        "Scope_and_Responsibilities": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "@UI.MultiLineText": true,
+          "type": "cds.LargeString"
+        },
+        "Commercial_Terms": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "@UI.MultiLineText": true,
+          "type": "cds.LargeString"
+        },
+        "Compliance_Terms": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "@UI.MultiLineText": true,
+          "type": "cds.LargeString"
+        },
+        "Others": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "@UI.MultiLineText": true,
+          "type": "cds.LargeString"
+        },
+        "vendtovenr": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.Fvendor_responseoo",
+          "on": [
+            {
+              "ref": [
+                "vendtovenr",
+                "venrtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendtoptd": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.PAYMENT_TERM_DETAILS",
+          "on": [
+            {
+              "ref": [
+                "vendtoptd",
+                "ptdtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendtopd": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "CatalogService.PAN_PRICE_DETAILS",
+          "on": [
+            {
+              "ref": [
+                "vendtopd",
+                "pdtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendor_datatotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.tab1",
+          "on": [
+            {
+              "ref": [
+                "vendor_datatotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.Fvendor_responseoo": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_vendor_response"
+          ]
+        }
+      },
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Proposed_Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Supplier_Origin_State": {
+          "type": "cds.String"
+        },
+        "Destination_State_BKTShipDASHto_LocationBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_GST_Number": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Date": {
+          "type": "cds.Date"
+        },
+        "Vendor_PE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH1": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH2": {
+          "type": "cds.String"
+        },
+        "Technical_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Commercial_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Vendor_References_to_be_displayed_in_Order": {
+          "type": "cds.String"
+        },
+        "Shortlisted_Vendors_Response_summary": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Incoterms": {
+          "type": "cds.String"
+        },
+        "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC": {
+          "type": "cds.String"
+        },
+        "Details_of_deviated_or_better_terms_agreed_with_the_Vendor": {
+          "type": "cds.String"
+        },
+        "Market_Scenario_and_Demand": {
+          "type": "cds.String"
+        },
+        "Companys_Position_and_Market_dynamics_of_this_purchase": {
+          "type": "cds.String"
+        },
+        "Should_Be_Cost_estimated": {
+          "type": "cds.String"
+        },
+        "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal": {
+          "type": "cds.String"
+        },
+        "Price_Escalation_Agreed_if_any": {
+          "type": "cds.String"
+        },
+        "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor": {
+          "type": "cds.String"
+        },
+        "Transportation": {
+          "type": "cds.String"
+        },
+        "Logistics_Cost": {
+          "type": "cds.String"
+        },
+        "Delivery_Schedule": {
+          "type": "cds.String"
+        },
+        "Tax_Details": {
+          "type": "cds.String"
+        },
+        "Additional_Remarks": {
+          "type": "cds.String"
+        },
+        "ABG": {
+          "type": "cds.String"
+        },
+        "ABG_Value": {
+          "type": "cds.String"
+        },
+        "CPBG": {
+          "type": "cds.String"
+        },
+        "CPBG_Value": {
+          "type": "cds.String"
+        },
+        "Scope_and_Responsibilities": {
+          "type": "cds.LargeString"
+        },
+        "Commercial_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Compliance_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Others": {
+          "type": "cds.LargeString"
+        },
+        "venrtovend": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.vendor_data",
+          "keys": [
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.PAYMENT_TERM_DETAILS": {
+      "kind": "entity",
+      "@UI.PresentationVariant.Visualizations": [
+        "@UI.LineItem#PAYMENT_TERM_DETAILS"
+      ],
+      "@UI.PresentationVariant.SortOrder": [
+        {
+          "$Type": "Common.SortOrderType",
+          "Property": {
+            "=": "slNo"
+          },
+          "Descending": true
+        }
+      ],
+      "@UI.CreateHidden": true,
+      "@UI.DeleteHidden": true,
+      "@UI.LineItem#PAYMENT_TERM_DETAILS": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "slNo"
+          },
+          "Label": "slNo",
+          "@UI.Hidden": true
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "iddd"
+          },
+          "Label": "Payment Terms"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Percentage"
+          },
+          "Label": "Percentage"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Description"
+          },
+          "Label": "Description"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Due_date"
+          },
+          "Label": "Due date"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Mandatory_Documents_OR_Submissions"
+          },
+          "Label": "Mandatory Documents / Submissions"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "To_be_certified_in_Company"
+          },
+          "Label": "To be Certified in Company"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Payment_methord"
+          },
+          "Label": "Payment Methord"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_PAYMENT_TERM_DETAILS"
+          ]
+        }
+      },
+      "elements": {
+        "ptdkey": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Proposed_Vendor_Code": {
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "type": "cds.String"
+        },
+        "iddd": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "slNo": {
+          "type": "cds.Integer"
+        },
+        "Payment_methord": {
+          "@Common.ValueList.$Type": "Common.ValueListType",
+          "@Common.ValueList.CollectionPath": "PAN_Payment_Method_Drop",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "Payment_methord"
+              },
+              "ValueListProperty": "Payment_method"
+            }
+          ],
+          "@Common.ValueList.Label": "search_help",
+          "@Common.ValueListWithFixedValues": true,
+          "type": "cds.String",
+          "default": {
+            "val": "RTGS payment"
+          }
+        },
+        "Percentage": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Description": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Due_date": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Mandatory_Documents_OR_Submissions": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "To_be_certified_in_Company": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "ptdtovend": {
+          "type": "cds.Association",
+          "target": "CatalogService.vendor_data",
+          "on": [
+            {
+              "ref": [
+                "ptdtovend",
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ptdtovend",
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.PAN_PRICE_DETAILS": {
+      "kind": "entity",
+      "@UI.CreateHidden": true,
+      "@UI.DeleteHidden": true,
+      "@UI.LineItem#PAN_PRICE_DETAILS": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Item_Code"
+          },
+          "Label": "Item Code"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "HSN_OR_SAC_Code"
+          },
+          "Label": "HSN / SAC Code"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Item_Short_Description"
+          },
+          "Label": "Item Short Description"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "UOM"
+          },
+          "Label": "UOM"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Quantity"
+          },
+          "Label": "Quantity"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Unit_Price"
+          },
+          "Label": "Unit Price"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Amount"
+          },
+          "Label": "Amount"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Indian_Tax_PER"
+          },
+          "Label": "Indian Tax %"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Quantity_Over_Delivery_Tolerance"
+          },
+          "Label": "Quantity Over Delivery tolerance"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_PRICE_DETAILS"
+          ]
+        }
+      },
+      "elements": {
+        "pdkey": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Proposed_Vendor_Code": {
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "type": "cds.String"
+        },
+        "Item_Code": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "HSN_OR_SAC_Code": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "extendedPrice": {
+          "type": "cds.String"
+        },
+        "Item_Short_Description": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "UOM": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Quantity": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Unit_Price": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Amount": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Indian_Tax_PER": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Quantity_Over_Delivery_Tolerance": {
+          "type": "cds.String"
+        },
+        "pdtovend": {
+          "type": "cds.Association",
+          "target": "CatalogService.vendor_data",
+          "on": [
+            {
+              "ref": [
+                "pdtovend",
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "pdtovend",
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.WORKFLOW_HISTORY": {
+      "kind": "entity",
+      "@UI.CreateHidden": true,
+      "@UI.DeleteHidden": true,
+      "@UI.LineItem#WORKFLOWHISTORY": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "level"
+          },
+          "Label": "level"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Title"
+          },
+          "Label": "Title"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Employee_ID"
+          },
+          "Label": "Employee_ID"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Employee_Name"
+          },
+          "Label": "Employee_Name"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Result"
+          },
+          "Label": "Result"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Begin_DateAND_Time"
+          },
+          "Label": "Begin Date& Time"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "End_DateAND_Time"
+          },
+          "Label": "End Date& Time"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Days_Taken"
+          },
+          "Label": "Days Taken"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Remarks"
+          },
+          "Label": "Remarks"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Approved_by"
+          },
+          "Label": "Approved_by"
+        }
+      ],
+      "@UI.LineItem#test": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "level"
+          },
+          "Label": "level"
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Employee_ID"
+          },
+          "Label": "Employee_ID"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_WORKFLOW_HISTORY"
+          ]
+        }
+      },
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Employee_ID": {
+          "type": "cds.String"
+        },
+        "level": {
+          "type": "cds.String"
+        },
+        "Approved_by": {
+          "type": "cds.String"
+        },
+        "Employee_Name": {
+          "type": "cds.String"
+        },
+        "Title": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Notification_Status": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Result": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Begin_DateAND_Time": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "End_DateAND_Time": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Days_Taken": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "Remarks": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "WORKFLOW_HISTORYtotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.tab1",
+          "on": [
+            {
+              "ref": [
+                "WORKFLOW_HISTORYtotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.attachments": {
+      "kind": "entity",
+      "@UI.CreateHidden": true,
+      "@UI.DeleteHidden": true,
+      "@UI.LineItem#ATTACHMENTSINTERNALTOPANFORAPPROVERS": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "content"
+          },
+          "Label": "FILES"
+        }
+      ],
+      "@UI.FieldGroup#filecontent.Data": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "content"
+          },
+          "Label": "content"
+        }
+      ],
+      "@UI.LineItem#attachments": [
+        {
+          "$Type": "UI.DataFieldForAnnotation",
+          "Target": "@UI.FieldGroup#filecontent",
+          "Label": "content"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_attachments"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "content": {
+          "@Core.MediaType": {
+            "=": "mediaType"
+          },
+          "type": "cds.LargeBinary"
+        },
+        "mediaType": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "@Core.IsMediaType": true,
+          "type": "cds.String"
+        },
+        "fileName": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
+          "type": "cds.String"
+        },
+        "size": {
+          "type": "cds.Integer"
+        },
+        "url": {
+          "type": "cds.String"
+        },
+        "pdftotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.tab1",
+          "on": [
+            {
+              "ref": [
+                "pdftotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.PAN_Payment_Method_Drop": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_Payment_Method_Drop"
+          ]
+        }
+      },
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Payment_method": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "CatalogService.PAN_Comments": {
+      "kind": "entity",
+      "@UI.LineItem#ApprovalComments": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Comments"
+          },
+          "Label": "Comments"
+        }
+      ],
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_Comments"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "idd": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "user": {
+          "type": "cds.String"
+        },
+        "Comments": {
+          "@Common.FieldControl": {
+            "#": "Optional"
+          },
+          "type": "cds.LargeString"
+        },
+        "status": {
+          "type": "cds.String"
+        },
+        "comtotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "CatalogService.tab1",
+          "on": [
+            {
+              "ref": [
+                "comtotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CatalogService.sendforapproval": {
+      "kind": "function",
+      "params": {
+        "data": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.LargeString"
+      }
+    },
+    "CatalogService.InsertData": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getData": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.switch_control": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getuserinfo": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getcomments": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.getsync": {
+      "kind": "function",
+      "params": {
+        "data": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.draft": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.Listdata": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.flag": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        },
+        "case": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "CatalogService.updatee": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval": {
+      "@source": "srv/service.cds",
+      "kind": "service"
+    },
+    "PanApproval.PAN_Details_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_Details"
+          ]
+        }
+      },
+      "elements": {
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String",
+          "default": {
+            "val": "def"
+          }
+        },
+        "SBG": {
+          "type": "cds.String"
+        },
+        "SBU": {
+          "type": "cds.String"
+        },
+        "BUORPurchasing_Group": {
+          "type": "cds.String"
+        },
+        "Plant_Code": {
+          "type": "cds.String"
+        },
+        "Project_Description": {
+          "type": "cds.String"
+        },
+        "PR_NumberBKTsBKT": {
+          "type": "cds.String"
+        },
+        "Subject_of_ProposalOROrder": {
+          "type": "cds.String"
+        },
+        "Previous_PAN_References": {
+          "type": "cds.String"
+        },
+        "Split_OrderORNo_of_vendors": {
+          "type": "cds.String"
+        },
+        "SOP_Type": {
+          "type": "cds.String"
+        },
+        "Order_Type_OR_Document_tyFuuidpe": {
+          "type": "cds.String"
+        },
+        "Asset_Type": {
+          "type": "cds.String"
+        },
+        "Nature_of_Transaction": {
+          "type": "cds.String"
+        },
+        "Order_Location_OR_Plant": {
+          "type": "cds.String"
+        },
+        "Base_line_spend": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Final_proposed_Value": {
+          "type": "cds.String"
+        },
+        "Savings_achieved_btw_initial_and_final_quote": {
+          "type": "cds.String"
+        },
+        "Savings_against_base_line_spend_of_RFP": {
+          "type": "cds.String"
+        },
+        "Number_of_Vendors_Shortlisted_for_RFP": {
+          "type": "cds.String"
+        },
+        "Number_of_Vendors_Technically_Qualified": {
+          "type": "cds.String"
+        },
+        "Required_at_Site_Date": {
+          "type": "cds.String"
+        },
+        "RFP_Number": {
+          "type": "cds.String"
+        },
+        "RFP_Publish_Date": {
+          "type": "cds.String"
+        },
+        "Time_Taken_for_FinalizationDASHIn_DAYS": {
+          "type": "cds.String"
+        },
+        "status": {
+          "type": "cds.String"
+        },
+        "statusInd": {
+          "type": "cds.Integer"
+        },
+        "created_by": {
+          "type": "cds.String"
+        },
+        "task_id": {
+          "type": "cds.String"
+        },
+        "type": {
+          "type": "cds.String"
+        },
+        "status_a": {
+          "type": "cds.String"
+        },
+        "switch_control": {
+          "type": "cds.Boolean",
+          "default": {
+            "val": false
+          }
+        },
+        "ProjectId": {
+          "type": "cds.String"
+        },
+        "number_of_vendors_invited": {
+          "type": "cds.String"
+        },
+        "total_levels_of_approval": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "Current_level_of_approval": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "Sap_workitem_id": {
+          "type": "cds.String"
+        },
+        "Comments": {
+          "type": "cds.LargeString"
+        },
+        "submitted_by": {
+          "type": "cds.String"
+        },
+        "submitted_date": {
+          "type": "cds.String"
+        },
+        "tab1totab2": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_WEB_EVENT_APR",
+          "on": [
+            {
+              "ref": [
+                "tab1totab2",
+                "tab2totab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1totab3": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_TYPE_APR",
+          "on": [
+            {
+              "ref": [
+                "tab1totab3",
+                "tab3totab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1toWORKFLOW_HISTORY": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_WORKFLOW_HISTORY_APR",
+          "on": [
+            {
+              "ref": [
+                "tab1toWORKFLOW_HISTORY",
+                "WORKFLOW_HISTORYtotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1topdf": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_attachments_APR",
+          "on": [
+            {
+              "ref": [
+                "tab1topdf",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        },
+        "tab1tovendor_data": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_vendor_data_APR",
+          "on": [
+            {
+              "ref": [
+                "tab1tovendor_data",
+                "vendor_datatotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "tab1tocom": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_Comments_APR",
+          "on": [
+            {
+              "ref": [
+                "tab1tocom",
+                "comtotab1"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_WEB_EVENT_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_WEB_EVENT"
+          ]
+        }
+      },
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "eventNo": {
+          "type": "cds.String"
+        },
+        "number": {
+          "type": "cds.String"
+        },
+        "date": {
+          "type": "cds.String"
+        },
+        "numberOfVendorsParticipated": {
+          "type": "cds.String"
+        },
+        "l1AmountObtained": {
+          "type": "cds.String"
+        },
+        "tab2totab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_Details_APR",
+          "on": [
+            {
+              "ref": [
+                "tab2totab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_TYPE_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_TYPE"
+          ]
+        }
+      },
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "typeNo": {
+          "type": "cds.String"
+        },
+        "required": {
+          "type": "cds.String"
+        },
+        "submittedOn": {
+          "type": "cds.String"
+        },
+        "receivedOn": {
+          "type": "cds.String"
+        },
+        "timeTakenForApproval": {
+          "type": "cds.String"
+        },
+        "tab3totab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_Details_APR",
+          "on": [
+            {
+              "ref": [
+                "tab3totab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_vendor_data_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_vendor_data"
+          ]
+        }
+      },
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Awarded_Vendor": {
+          "type": "cds.String"
+        },
+        "Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Vendor_Location": {
+          "type": "cds.String"
+        },
+        "Technically_Approved": {
+          "type": "cds.String"
+        },
+        "Client_Approved": {
+          "type": "cds.String"
+        },
+        "Original_quote": {
+          "type": "cds.String"
+        },
+        "Final_Quote": {
+          "type": "cds.String"
+        },
+        "Order_amount_OR_Split_order_amount": {
+          "type": "cds.String"
+        },
+        "Discount_Amount": {
+          "type": "cds.String"
+        },
+        "Discount_percentage": {
+          "type": "cds.String"
+        },
+        "Rank": {
+          "type": "cds.String"
+        },
+        "Proposed_Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Supplier_Origin_State": {
+          "type": "cds.String"
+        },
+        "Destination_State_BKTShipDASHto_LocationBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_GST_Number": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH1": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH2": {
+          "type": "cds.String"
+        },
+        "Technical_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Commercial_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Vendor_References_to_be_displayed_in_Order": {
+          "type": "cds.String"
+        },
+        "Shortlisted_Vendors_Response_summary": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Incoterms": {
+          "type": "cds.String"
+        },
+        "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC": {
+          "type": "cds.String"
+        },
+        "Details_of_deviated_or_better_terms_agreed_with_the_Vendor": {
+          "type": "cds.String"
+        },
+        "Market_Scenario_and_Demand": {
+          "type": "cds.String"
+        },
+        "Companys_Position_and_Market_dynamics_of_this_purchase": {
+          "type": "cds.String"
+        },
+        "Should_Be_Cost_estimated": {
+          "type": "cds.String"
+        },
+        "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal": {
+          "type": "cds.String"
+        },
+        "Price_Escalation_Agreed_if_any": {
+          "type": "cds.String"
+        },
+        "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor": {
+          "type": "cds.String"
+        },
+        "Transportation": {
+          "type": "cds.String"
+        },
+        "Logistics_Cost": {
+          "type": "cds.String"
+        },
+        "Delivery_Schedule": {
+          "type": "cds.String"
+        },
+        "Tax_Details": {
+          "type": "cds.String"
+        },
+        "Additional_Remarks": {
+          "type": "cds.String"
+        },
+        "ABG": {
+          "type": "cds.String"
+        },
+        "ABG_Value": {
+          "type": "cds.String"
+        },
+        "CPBG": {
+          "type": "cds.String"
+        },
+        "CPBG_Value": {
+          "type": "cds.String"
+        },
+        "Scope_and_Responsibilities": {
+          "type": "cds.LargeString"
+        },
+        "Commercial_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Compliance_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Others": {
+          "type": "cds.LargeString"
+        },
+        "vendtovenr": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_vendor_response_APR",
+          "on": [
+            {
+              "ref": [
+                "vendtovenr",
+                "venrtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendtoptd": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_PAYMENT_TERM_DETAILS_APR",
+          "on": [
+            {
+              "ref": [
+                "vendtoptd",
+                "ptdtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendtopd": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "PanApproval.PAN_PRICE_DETAILS_APR",
+          "on": [
+            {
+              "ref": [
+                "vendtopd",
+                "pdtovend"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self"
+              ]
+            }
+          ]
+        },
+        "vendor_datatotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_Details_APR",
+          "on": [
+            {
+              "ref": [
+                "vendor_datatotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_vendor_response_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_vendor_response"
+          ]
+        }
+      },
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Proposed_Vendor_Name": {
+          "type": "cds.String"
+        },
+        "Supplier_Origin_State": {
+          "type": "cds.String"
+        },
+        "Destination_State_BKTShipDASHto_LocationBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_GST_Number": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_CE_Date": {
+          "type": "cds.Date"
+        },
+        "Vendor_PE_Score": {
+          "type": "cds.String"
+        },
+        "Vendor_PE_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH1": {
+          "type": "cds.String"
+        },
+        "Vendor_Contact_PersonDASH2": {
+          "type": "cds.String"
+        },
+        "Technical_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Commercial_Committee_who_cleared_the_proposal": {
+          "type": "cds.String"
+        },
+        "Vendor_References_to_be_displayed_in_Order": {
+          "type": "cds.String"
+        },
+        "Shortlisted_Vendors_Response_summary": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Date": {
+          "type": "cds.String"
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "type": "cds.String"
+        },
+        "Project_CurrencyORBase_Currency": {
+          "type": "cds.String"
+        },
+        "Order_CurrencyORBid_currency": {
+          "type": "cds.String"
+        },
+        "Incoterms": {
+          "type": "cds.String"
+        },
+        "Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC": {
+          "type": "cds.String"
+        },
+        "Details_of_deviated_or_better_terms_agreed_with_the_Vendor": {
+          "type": "cds.String"
+        },
+        "Market_Scenario_and_Demand": {
+          "type": "cds.String"
+        },
+        "Companys_Position_and_Market_dynamics_of_this_purchase": {
+          "type": "cds.String"
+        },
+        "Should_Be_Cost_estimated": {
+          "type": "cds.String"
+        },
+        "Highlights_of_this_proposal_and_Price_Justification_for_this_proposal": {
+          "type": "cds.String"
+        },
+        "Price_Escalation_Agreed_if_any": {
+          "type": "cds.String"
+        },
+        "Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor": {
+          "type": "cds.String"
+        },
+        "Transportation": {
+          "type": "cds.String"
+        },
+        "Logistics_Cost": {
+          "type": "cds.String"
+        },
+        "Delivery_Schedule": {
+          "type": "cds.String"
+        },
+        "Tax_Details": {
+          "type": "cds.String"
+        },
+        "Additional_Remarks": {
+          "type": "cds.String"
+        },
+        "ABG": {
+          "type": "cds.String"
+        },
+        "ABG_Value": {
+          "type": "cds.String"
+        },
+        "CPBG": {
+          "type": "cds.String"
+        },
+        "CPBG_Value": {
+          "type": "cds.String"
+        },
+        "Scope_and_Responsibilities": {
+          "type": "cds.LargeString"
+        },
+        "Commercial_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Compliance_Terms": {
+          "type": "cds.LargeString"
+        },
+        "Others": {
+          "type": "cds.LargeString"
+        },
+        "venrtovend": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_vendor_data_APR",
+          "keys": [
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_PAYMENT_TERM_DETAILS_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_PAYMENT_TERM_DETAILS"
+          ]
+        }
+      },
+      "elements": {
+        "ptdkey": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Proposed_Vendor_Code": {
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "type": "cds.String"
+        },
+        "iddd": {
+          "type": "cds.String"
+        },
+        "slNo": {
+          "type": "cds.Integer"
+        },
+        "Payment_methord": {
+          "type": "cds.String",
+          "default": {
+            "val": "RTGS payment"
+          }
+        },
+        "Percentage": {
+          "type": "cds.String"
+        },
+        "Description": {
+          "type": "cds.String"
+        },
+        "Due_date": {
+          "type": "cds.String"
+        },
+        "Mandatory_Documents_OR_Submissions": {
+          "type": "cds.String"
+        },
+        "To_be_certified_in_Company": {
+          "type": "cds.String"
+        },
+        "ptdtovend": {
+          "type": "cds.Association",
+          "target": "PanApproval.PAN_vendor_data_APR",
+          "on": [
+            {
+              "ref": [
+                "ptdtovend",
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ptdtovend",
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_PRICE_DETAILS_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_PRICE_DETAILS"
+          ]
+        }
+      },
+      "elements": {
+        "pdkey": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Proposed_Vendor_Code": {
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "type": "cds.String"
+        },
+        "Item_Code": {
+          "type": "cds.String"
+        },
+        "HSN_OR_SAC_Code": {
+          "type": "cds.String"
+        },
+        "extendedPrice": {
+          "type": "cds.String"
+        },
+        "Item_Short_Description": {
+          "type": "cds.String"
+        },
+        "UOM": {
+          "type": "cds.String"
+        },
+        "Quantity": {
+          "type": "cds.String"
+        },
+        "Unit_Price": {
+          "type": "cds.String"
+        },
+        "Amount": {
+          "type": "cds.String"
+        },
+        "Indian_Tax_PER": {
+          "type": "cds.String"
+        },
+        "Quantity_Over_Delivery_Tolerance": {
+          "type": "cds.String"
+        },
+        "pdtovend": {
+          "type": "cds.Association",
+          "target": "PanApproval.PAN_vendor_data_APR",
+          "on": [
+            {
+              "ref": [
+                "pdtovend",
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Proposed_Vendor_Code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "pdtovend",
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_WORKFLOW_HISTORY_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_WORKFLOW_HISTORY"
+          ]
+        }
+      },
+      "elements": {
+        "idd": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Employee_ID": {
+          "type": "cds.String"
+        },
+        "level": {
+          "type": "cds.String"
+        },
+        "Approved_by": {
+          "type": "cds.String"
+        },
+        "Employee_Name": {
+          "type": "cds.String"
+        },
+        "Title": {
+          "type": "cds.String"
+        },
+        "Notification_Status": {
+          "type": "cds.String"
+        },
+        "Result": {
+          "type": "cds.String"
+        },
+        "Begin_DateAND_Time": {
+          "type": "cds.String"
+        },
+        "End_DateAND_Time": {
+          "type": "cds.String"
+        },
+        "Days_Taken": {
+          "type": "cds.String"
+        },
+        "Remarks": {
+          "type": "cds.String"
+        },
+        "WORKFLOW_HISTORYtotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_Details_APR",
+          "on": [
+            {
+              "ref": [
+                "WORKFLOW_HISTORYtotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_attachments_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_attachments"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "content": {
+          "@Core.MediaType": {
+            "=": "mediaType"
+          },
+          "type": "cds.LargeBinary"
+        },
+        "mediaType": {
+          "@Core.IsMediaType": true,
+          "type": "cds.String"
+        },
+        "fileName": {
+          "type": "cds.String"
+        },
+        "size": {
+          "type": "cds.Integer"
+        },
+        "url": {
+          "type": "cds.String"
+        },
+        "pdftotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_Details_APR",
+          "on": [
+            {
+              "ref": [
+                "pdftotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.PAN_Payment_Method_Drop_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_Payment_Method_Drop"
+          ]
+        }
+      },
+      "elements": {
+        "id": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Payment_method": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "PanApproval.PAN_Comments_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.PAN_Comments"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "idd": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "user": {
+          "type": "cds.String"
+        },
+        "Comments": {
+          "type": "cds.LargeString"
+        },
+        "status": {
+          "type": "cds.String"
+        },
+        "comtotab1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "PanApproval.PAN_Details_APR",
+          "on": [
+            {
+              "ref": [
+                "comtotab1",
+                "PAN_Number"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PAN_Number"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "PanApproval.vendorTaxDetails_APR": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.vendorTaxDetails"
+          ]
+        }
+      },
+      "elements": {
+        "Proposed_Vendor_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "Item_Code": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "idd": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String"
+        },
+        "value": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "PanApproval.sendforapproval": {
+      "kind": "function",
+      "params": {
+        "data": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.LargeString"
+      }
+    },
+    "PanApproval.InsertData": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval.finalApprove": {
+      "kind": "function",
+      "params": {
+        "data": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval.getData": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval.switch_control": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval.getuser": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval.Reject": {
+      "kind": "function",
+      "params": {
+        "data": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "PanApproval.getcomments": {
+      "kind": "function",
+      "params": {
+        "ID": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    },
+    "Language": {
+      "kind": "type",
+      "@title": "{i18n>Language}",
+      "@description": "{i18n>LanguageCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Languages",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "Currency": {
+      "kind": "type",
+      "@title": "{i18n>Currency}",
+      "@description": "{i18n>CurrencyCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Currencies",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "Country": {
+      "kind": "type",
+      "@title": "{i18n>Country}",
+      "@description": "{i18n>CountryCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Countries",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "sap.common": {
+      "kind": "context"
+    },
+    "sap.common.Locale": {
+      "kind": "type",
+      "@title": "{i18n>LanguageCode}",
+      "type": "cds.String",
+      "length": 14
+    },
+    "sap.common.Languages": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@Common.Text": {
+            "=": "name"
+          },
+          "@title": "{i18n>LanguageCode}",
+          "key": true,
+          "type": "sap.common.Locale",
+          "length": 14
+        },
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Languages.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Languages.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.Countries": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>CountryCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Countries.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Countries.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.Currencies": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>CurrencyCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "symbol": {
+          "@title": "{i18n>CurrencySymbol}",
+          "type": "cds.String",
+          "length": 5
+        },
+        "minorUnit": {
+          "@title": "{i18n>CurrencyMinorUnit}",
+          "type": "cds.Int16"
+        },
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Currencies.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Currencies.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.CodeList": {
+      "kind": "aspect",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        }
+      }
+    },
+    "sap.common.TextsAspect": {
+      "kind": "aspect",
+      "elements": {
+        "locale": {
+          "@title": "{i18n>LanguageCode}",
+          "key": true,
+          "type": "sap.common.Locale",
+          "length": 14
+        }
+      }
+    },
+    "cuid": {
+      "kind": "aspect",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        }
+      }
+    },
+    "managed": {
+      "kind": "aspect",
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        }
+      }
+    },
+    "temporal": {
+      "kind": "aspect",
+      "elements": {
+        "validFrom": {
+          "@cds.valid.from": true,
+          "type": "cds.Timestamp"
+        },
+        "validTo": {
+          "@cds.valid.to": true,
+          "type": "cds.Timestamp"
+        }
+      }
+    },
+    "User": {
+      "kind": "type",
+      "@title": "{i18n>UserID}",
+      "@description": "{i18n>UserID.Description}",
+      "type": "cds.String",
+      "length": 255
+    },
+    "extensible": {
+      "kind": "aspect",
+      "elements": {
+        "extensions__": {
+          "@cds.api.ignore": true,
+          "type": "cds.String"
+        }
+      }
+    },
+    "sap.common.Languages.texts": {
+      "kind": "entity",
+      "@odata.draft.enabled": false,
+      "includes": [
+        "sap.common.TextsAspect"
+      ],
+      "elements": {
+        "locale": {
+          "@title": "{i18n>LanguageCode}",
+          "key": true,
+          "type": "sap.common.Locale",
+          "length": 14
+        },
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@odata.containment.ignore": true,
+          "@Common.Text": {
+            "=": "name"
+          },
+          "@title": "{i18n>LanguageCode}",
+          "key": true,
+          "type": "sap.common.Locale",
+          "length": 14
+        }
+      }
+    },
+    "sap.common.Countries.texts": {
+      "kind": "entity",
+      "@odata.draft.enabled": false,
+      "includes": [
+        "sap.common.TextsAspect"
+      ],
+      "elements": {
+        "locale": {
+          "@title": "{i18n>LanguageCode}",
+          "key": true,
+          "type": "sap.common.Locale",
+          "length": 14
+        },
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@odata.containment.ignore": true,
+          "@title": "{i18n>CountryCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "sap.common.Currencies.texts": {
+      "kind": "entity",
+      "@odata.draft.enabled": false,
+      "includes": [
+        "sap.common.TextsAspect"
+      ],
+      "elements": {
+        "locale": {
+          "@title": "{i18n>LanguageCode}",
+          "key": true,
+          "type": "sap.common.Locale",
+          "length": 14
+        },
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": null,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@odata.containment.ignore": true,
+          "@title": "{i18n>CurrencyCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    }
+  },
+  "extensions": [
+    {
+      "annotate": "CatalogService.attachments",
+      "elements": {
+        "contentS": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        }
+      }
+    },
+    {
+      "annotate": "CatalogService.PAYMENT_TERM_DETAILS",
+      "elements": {
+        "percentage_payment_for_progress": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "percentage_payment_for_retention": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Payment_Type": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "ADVANCE": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Progress": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Retention": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Percentage_Total": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Percentage_Payment": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "To_be_certified_in_Company_by": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          }
+        },
+        "Mandatory_Documents_OR_Submissions_for_Progress": {
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          }
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Vendor_Final_Quotation_Date": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        }
+      }
+    },
+    {
+      "annotate": "CatalogService.tab1",
+      "elements": {
+        "Order_Value_BKTIn_Project_CurrencyBKT": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Order_Value_BKTIn_Bid_CurrencyBKT": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "Vendor_Final_Quotation_Amount": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        "justification": {
+          "@Common.FieldControl": {
+            "#": "Optional"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "creator": "CDS Compiler v4.5.0",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}

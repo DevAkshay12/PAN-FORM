@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:rich="sap.ui.richtexteditor"
+    xmlns:commons="sap.suite.ui.commons"
+>
+    <Dialog id="_IDDialog" title="Approval History" class="sapUiResponsiveContentPadding" beforeOpen=".onBeforeOpen" afterClose=".onAfterClose" resizable="true" draggable="true">
+        <content>
+            <VBox id="box" width="800px" height="500px">
+            <commons:TimelineItem id="time"
+					dateTime="HireDate"
+					title="JobTitle"
+					userNameClickable="true"
+					userNameClicked="onUserNameClick"
+					select="onPressItems"
+					userPicture="Photo"
+					text="JobResponsibilities"
+					userName="Name"
+            ></commons:TimelineItem>
+	 <Button id="cancel"
+                text="Cancel"
+                press=".onCancel" />
+            </VBox>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

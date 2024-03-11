@@ -1,0 +1,16 @@
+VIEW PanApproval_PAN_PAYMENT_TERM_DETAILS_APR AS SELECT
+  PAN_PAYMENT_TERM_DETAILS_0.ptdkey,
+  PAN_PAYMENT_TERM_DETAILS_0.Proposed_Vendor_Code,
+  PAN_PAYMENT_TERM_DETAILS_0.PAN_Number,
+  PAN_PAYMENT_TERM_DETAILS_0.iddd,
+  PAN_PAYMENT_TERM_DETAILS_0.slNo,
+  PAN_PAYMENT_TERM_DETAILS_0.Payment_methord,
+  PAN_PAYMENT_TERM_DETAILS_0.Percentage,
+  PAN_PAYMENT_TERM_DETAILS_0.Description,
+  PAN_PAYMENT_TERM_DETAILS_0.Due_date,
+  PAN_PAYMENT_TERM_DETAILS_0.Mandatory_Documents_OR_Submissions,
+  PAN_PAYMENT_TERM_DETAILS_0.To_be_certified_in_Company
+FROM proj_schema_PAN_PAYMENT_TERM_DETAILS AS PAN_PAYMENT_TERM_DETAILS_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN PanApproval_PAN_vendor_data_APR AS ptdtovend ON (ptdtovend.Proposed_Vendor_Code = Proposed_Vendor_Code AND PAN_Number = ptdtovend.PAN_Number)
+)

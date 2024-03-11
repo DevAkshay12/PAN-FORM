@@ -1,0 +1,12 @@
+COLUMN TABLE proj_schema_PAN_TYPE (
+  idd NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  typeNo NVARCHAR(5000),
+  required NVARCHAR(5000),
+  submittedOn NVARCHAR(5000),
+  receivedOn NVARCHAR(5000),
+  timeTakenForApproval NVARCHAR(5000),
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN proj_schema_PAN_Details AS tab3totab1 ON (tab3totab1.PAN_Number = PAN_Number)
+)

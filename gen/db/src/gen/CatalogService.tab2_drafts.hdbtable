@@ -1,0 +1,17 @@
+COLUMN TABLE CatalogService_tab2_drafts (
+  idd NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  eventNo NVARCHAR(5000) NULL,
+  "NUMBER" NVARCHAR(5000) NULL,
+  "DATE" NVARCHAR(5000) NULL,
+  numberOfVendorsParticipated NVARCHAR(5000) NULL,
+  l1AmountObtained NVARCHAR(5000) NULL,
+  IsActiveEntity BOOLEAN,
+  HasActiveEntity BOOLEAN,
+  HasDraftEntity BOOLEAN,
+  DraftAdministrativeData_DraftUUID NVARCHAR(36) NOT NULL,
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_tab1_drafts AS tab2totab1 ON (tab2totab1.PAN_Number = PAN_Number),
+  MANY TO ONE JOIN CatalogService_DraftAdministrativeData AS DraftAdministrativeData ON (DraftAdministrativeData.DraftUUID = DraftAdministrativeData_DraftUUID)
+)

@@ -1,0 +1,12 @@
+COLUMN TABLE proj_schema_PAN_WEB_EVENT (
+  idd NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  eventNo NVARCHAR(5000),
+  "NUMBER" NVARCHAR(5000),
+  "DATE" NVARCHAR(5000),
+  numberOfVendorsParticipated NVARCHAR(5000),
+  l1AmountObtained NVARCHAR(5000),
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN proj_schema_PAN_Details AS tab2totab1 ON (tab2totab1.PAN_Number = PAN_Number)
+)

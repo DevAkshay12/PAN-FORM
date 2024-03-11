@@ -1,0 +1,219 @@
+/* .sapMIBar{
+    visibility: hidden;
+} */
+.sapMLabel .sapMLabelTextWrapper {
+    font-weight: bolder;
+}
+.sapMListTbl{
+    border : solid 0.5px;
+    }
+.sapMEmptyIndicator{
+    visibility: hidden ;
+}
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:StandardAction\:\:Delete{
+    display: none;
+}
+/* #tab1List--fe\:\:table\:\:tab1\:\:LineItem-toolbar{
+ visibility: hidden
+} */
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtopd\:\:LineItem\:\:PAN_PRICE_DETAILS-filterInfoBar{
+    visibility: hidden;
+}
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-filterInfoBar{
+    visibility: hidden;
+}
+.sapMIllustratedMessageAdditionalContent{
+    display: none;
+}
+#panappbeta\:\:tab1ObjectPage--fe\:\:FormContainer\:\:Justification-content,
+#panappbeta\:\:tab1ObjectPage--fe\:\:FormContainer\:\:Justification\:\:FormElement\:\:DataField\:\:tab1tocom\:\:Comments{
+    width : 300%;
+}
+#panappbeta\:\:tab1ObjectPage--fe\:\:FooterBar\:\:CustomAction\:\:Send-inner{
+    background: green;
+ color: white;
+}
+
+/* tool bar  */
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1totab3\:\:LineItem\:\:TYPE-toolbar,
+/* #panappbeta\:\:tab1List--fe\:\:table\:\:tab1\:\:LineItem-toolbar{
+display: none;
+} */
+#panappbeta\:\:tab1List--fe\:\:table\:\:tab1\:\:LineItem-copy-inner{
+    display: none;
+}
+#panappbeta\:\:tab1List--fe\:\:table\:\:tab1\:\:LineItem-settings-inner{
+    display: none;
+}
+#panappbeta\:\:tab1List--fe\:\:table\:\:tab1\:\:LineItem\:\:CustomAction\:\:Sync-inner{
+    background: blue;
+}
+#panappbeta\:\:tab1List--fe\:\:table\:\:tab1\:\:LineItem\:\:CustomAction\:\:Sync-BDI-content{
+    color:white
+}
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1totab2\:\:LineItem\:\:_-toolbar{
+    display: none;
+}
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1tovendor_data\:\:LineItem\:\:VendorData-toolbar
+{
+    display: none;
+}
+/* #panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1topdf\:\:LineItem\:\:ATTACHMENTSINTERNALTOPANFORAPPROVERS-toolbar
+{
+    display: none;
+} */
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY-toolbar{
+    visibility: hidden;
+}
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-toolbar{
+    display: none;
+}
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:FormContainer\:\:Justification\:\:FormElement\:\:DataField\:\:justification{
+width: 300%;
+}
+
+#panappbeta\:\:tab1List--fe\:\:FilterBar\:\:tab1-btnAdapt{
+    display: none;
+}
+#__separator13,
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY-copy,
+#__layout4{
+    display: none;
+}
+.sapUiFormCLElement{
+    background-color: aliceblue;
+    margin-bottom: 1%;
+    border-radius: 10px;
+}
+/* hiding the setting and filterbar in wf */
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtopd\:\:LineItem\:\:PAN_PRICE_DETAILS-toolbar,
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY\:\:StandardAction\:\:BasicSearch,
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY-settings-inner{
+    display: none;
+}
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY\:\:CustomAction\:\:refrestWF-inner{
+    background-color: #0070f2;
+    color: white;
+}
+
+/* #panappbeta\::\tab1ObjectPage--fe\::\CustomSubSection\::\Attachment--dewdewdw-inner
+{
+    display: none;
+} */
+
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row0-col4 .sapUiTableCellInner, 
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row1-col4 .sapUiTableCellInner,
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row2-col4 .sapUiTableCellInner,
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row3-col4 .sapUiTableCellInner ,
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row0-col2 .sapUiTableCellInner,
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row1-col2 .sapUiTableCellInner,
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row2-col2 .sapUiTableCellInner,
+#panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row3-col2 .sapUiTableCellInner {
+    overflow: visible !important;
+    
+  position: relative;
+  
+  
+  } 
+   /* #panappbeta::tab1_tab1tovendor_dataObjectPage--fe::table::vendtoptd::LineItem::PAYMENT_TERM_DETAILS-innerTable_col4 */
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row0-col4 .sapUiTableCellInner:hover span, 
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row1-col4 .sapUiTableCellInner:hover span,
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row2-col4 .sapUiTableCellInner:hover span,
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row3-col4 .sapUiTableCellInner:hover span ,
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row0-col2 .sapUiTableCellInner:hover span, 
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row1-col2 .sapUiTableCellInner:hover span,
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row2-col2 .sapUiTableCellInner:hover span,
+   #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtoptd\:\:LineItem\:\:PAYMENT_TERM_DETAILS-innerTable-rows-row3-col2 .sapUiTableCellInner:hover span {
+    
+    overflow-y: scroll !important;
+    /* overflow-x: hidden; */
+    /* padding: unset; */
+    padding: 10px;
+    text-wrap: wrap;
+    max-height: 150px; 
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 99999;
+    border: 2px solid gray;
+    border-radius: 5px;
+    
+  }
+  
+  /* #panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY-innerTable-rows-row0-col8 {
+    position: relative;
+  } */
+  
+  /* #panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY-innerTable-rows-row0-col8  {
+    overflow: visible !important; */
+    /* position: relative;
+  } */
+  
+  /* #panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY-innerTable-rows-row0-col8:hover span { */
+    /* white-space: normal !important; */
+    /* overflow: auto !important; Enable scrolling */
+    /* max-height: 150px; Adjust max-height as needed */
+    /* width: 1000px; */
+    /* position: absolute; */
+    /* background-color: white; */
+    /* z-index: 99999; */
+    /* border: 1px solid black; */
+  /* } */
+
+  #panappbeta\:\:tab1ObjectPage--fe\:\:FormContainer\:\:Justification\:\:FormElement\:\:DataField\:\:justification\:\:Field-edit{
+    height: 150px;
+    }
+    .sapUiTableHeaderDataCell.sapUiTableHeaderCellActive{
+        background-color: gainsboro;
+    }
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--uploadSet-list{
+    height: 270px !important;
+    overflow: scroll !important;
+}
+
+
+/* #panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--ddd-panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--uploadSet-0-editButton-inner {
+    display: none;
+}
+
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--ddd-panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--uploadSet-1-editButton-inner {
+    display: none;
+}
+
+
+#panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--ddd-panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--uploadSet-2-editButton {
+    display: none;
+} */
+.sapUiFormCLSmallColumns
+.sapUiFormCLElement>.sapUiFormCLCellsS6{
+    width: 100%;
+}
+.id1-content{
+    width: 90%;
+}
+
+
+/* .sapUiIcon {
+    scale: 1.5;
+} */
+
+/* .sapMListTblHighlightCol+.sapMListTblHeaderCell, .sapMListTblHighlightCell+.sapMListTblCell
+{
+    height: 65px;
+} */
+
+/* .sapMListTbl .sapUiIcon:not(.sapMLIBImgNav):not(.sapMBtnIcon):not(.sapFAvatarTypeIcon)
+{
+    height: 10px;
+    zoom: 150%;
+    padding-top: 10px;
+} */
+/* .uploadcss{
+    height: 100px;
+} */

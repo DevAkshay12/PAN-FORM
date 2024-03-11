@@ -1,0 +1,14 @@
+COLUMN TABLE proj_schema_PAN_Comments (
+  createdAt TIMESTAMP,
+  createdBy NVARCHAR(255),
+  modifiedAt TIMESTAMP,
+  modifiedBy NVARCHAR(255),
+  idd NVARCHAR(36) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  "USER" NVARCHAR(5000),
+  Comments NCLOB,
+  status NVARCHAR(5000),
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN proj_schema_PAN_Details AS comtotab1 ON (comtotab1.PAN_Number = PAN_Number)
+)

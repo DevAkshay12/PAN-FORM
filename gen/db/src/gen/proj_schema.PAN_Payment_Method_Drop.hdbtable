@@ -1,0 +1,5 @@
+COLUMN TABLE proj_schema_PAN_Payment_Method_Drop (
+  id NVARCHAR(36) NOT NULL,
+  Payment_method NVARCHAR(5000),
+  PRIMARY KEY(id)
+)

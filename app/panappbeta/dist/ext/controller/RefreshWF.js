@@ -1,0 +1,1 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{refresh:function(s){e.show("Refreshing Work Flow.");location.reload()}}});

@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+    <Dialog id="_IDDialog" title="Upload Attachment" class="sapUiResponsiveContentPadding"
+        beforeOpen=".onBeforeOpen"
+        afterClose=".onAfterClose">
+        <content>
+           <u:FileUploader id="__fileUploader"
+            placeholder="Choose a file..." 
+            change="onFileChange"
+             multiple="false" 
+             fileType="pdf,jpeg,png" 
+ />
+                     <Button id="ok"
+                text="OK"
+                press=".onOk"
+                type="Emphasized"
+/>
+            <Button id="cancel"
+                text="Cancel"
+                press=".onCancel" />
+
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,60 @@
+{
+  "name": "pan_form_demo",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.11.0",
+    "@sap-cloud-sdk/resilience": "^3.11.0",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/hdi-deploy": "^4.9.2",
+    "@sap/xsenv": "4.2.0",
+    "@sap/xssec": "3.6.1",
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "express": "^4",
+    "jwt-decode": "^4.0.0",
+    "passport": "0.7.0",
+    "readable-stream": "^4.5.2",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.120.1",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "undeploy": "cf undeploy pan_form_demo --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-panappbeta": "cds watch --open panappbeta/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/panappbeta"
+  ],
+  "cds": {
+    "requires": {
+      "db": "hana",
+      "destinations": true,
+      "ARIBA_DEV": {
+        "kind": "odata-v2",
+        "csrf": true,
+        "csrfInBatch": true,
+        "credentials": {
+          "destination": "TEST_DEST",
+          "requestTimeout": 120000
+        },
+        "destinationOptions": {
+          "selectionStrategy": "alwaysProvider",
+          "jwt": null
+        }
+      }
+    }
+  }
+}

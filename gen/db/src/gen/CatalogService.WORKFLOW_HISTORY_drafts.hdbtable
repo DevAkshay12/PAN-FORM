@@ -1,0 +1,23 @@
+COLUMN TABLE CatalogService_WORKFLOW_HISTORY_drafts (
+  idd NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  Employee_ID NVARCHAR(5000) NULL,
+  level NVARCHAR(5000) NULL,
+  Approved_by NVARCHAR(5000) NULL,
+  Employee_Name NVARCHAR(5000) NULL,
+  Title NVARCHAR(5000) NULL,
+  Notification_Status NVARCHAR(5000) NULL,
+  Result NVARCHAR(5000) NULL,
+  Begin_DateAND_Time NVARCHAR(5000) NULL,
+  End_DateAND_Time NVARCHAR(5000) NULL,
+  Days_Taken NVARCHAR(5000) NULL,
+  Remarks NVARCHAR(5000) NULL,
+  IsActiveEntity BOOLEAN,
+  HasActiveEntity BOOLEAN,
+  HasDraftEntity BOOLEAN,
+  DraftAdministrativeData_DraftUUID NVARCHAR(36) NOT NULL,
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_tab1_drafts AS WORKFLOW_HISTORYtotab1 ON (WORKFLOW_HISTORYtotab1.PAN_Number = PAN_Number),
+  MANY TO ONE JOIN CatalogService_DraftAdministrativeData AS DraftAdministrativeData ON (DraftAdministrativeData.DraftUUID = DraftAdministrativeData_DraftUUID)
+)

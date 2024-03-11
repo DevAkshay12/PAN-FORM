@@ -1,0 +1,17 @@
+COLUMN TABLE CatalogService_tab3_drafts (
+  idd NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  typeNo NVARCHAR(5000) NULL,
+  required NVARCHAR(5000) NULL,
+  submittedOn NVARCHAR(5000) NULL,
+  receivedOn NVARCHAR(5000) NULL,
+  timeTakenForApproval NVARCHAR(5000) NULL,
+  IsActiveEntity BOOLEAN,
+  HasActiveEntity BOOLEAN,
+  HasDraftEntity BOOLEAN,
+  DraftAdministrativeData_DraftUUID NVARCHAR(36) NOT NULL,
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_tab1_drafts AS tab3totab1 ON (tab3totab1.PAN_Number = PAN_Number),
+  MANY TO ONE JOIN CatalogService_DraftAdministrativeData AS DraftAdministrativeData ON (DraftAdministrativeData.DraftUUID = DraftAdministrativeData_DraftUUID)
+)

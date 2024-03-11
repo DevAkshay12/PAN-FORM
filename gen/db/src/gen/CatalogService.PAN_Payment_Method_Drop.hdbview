@@ -1,0 +1,4 @@
+VIEW CatalogService_PAN_Payment_Method_Drop AS SELECT
+  PAN_Payment_Method_Drop_0.id,
+  PAN_Payment_Method_Drop_0.Payment_method
+FROM proj_schema_PAN_Payment_Method_Drop AS PAN_Payment_Method_Drop_0

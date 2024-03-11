@@ -1,0 +1,12 @@
+VIEW CatalogService_tab2 AS SELECT
+  PAN_WEB_EVENT_0.idd,
+  PAN_WEB_EVENT_0.PAN_Number,
+  PAN_WEB_EVENT_0.eventNo,
+  PAN_WEB_EVENT_0."NUMBER",
+  PAN_WEB_EVENT_0."DATE",
+  PAN_WEB_EVENT_0.numberOfVendorsParticipated,
+  PAN_WEB_EVENT_0.l1AmountObtained
+FROM proj_schema_PAN_WEB_EVENT AS PAN_WEB_EVENT_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_tab1 AS tab2totab1 ON (tab2totab1.PAN_Number = PAN_Number)
+)

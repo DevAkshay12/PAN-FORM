@@ -1,0 +1,31 @@
+# CAP Sync_Project
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+*.iml
+*.flattened-pom.xml
+
+# IDEs
+# .vscode
+# .idea
+
+# @cap-js/cds-typer
+@cds-models
+
+# auto generated wildcard
+.env
+# auto generated wildcard
+db/.env
+# added by cds
+.cdsrc-private.json
+
+# added by cds
+.cdsrc-private.json

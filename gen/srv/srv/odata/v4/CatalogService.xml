@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="CatalogService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="tab1" EntityType="CatalogService.tab1">
+          <NavigationPropertyBinding Path="tab1totab2/tab2totab1" Target="tab1"/>
+          <NavigationPropertyBinding Path="tab1totab2/SiblingEntity" Target="tab1/tab1totab2"/>
+          <NavigationPropertyBinding Path="tab1totab3/tab3totab1" Target="tab1"/>
+          <NavigationPropertyBinding Path="tab1totab3/SiblingEntity" Target="tab1/tab1totab3"/>
+          <NavigationPropertyBinding Path="tab1toWORKFLOW_HISTORY/WORKFLOW_HISTORYtotab1" Target="tab1"/>
+          <NavigationPropertyBinding Path="tab1toWORKFLOW_HISTORY/SiblingEntity" Target="tab1/tab1toWORKFLOW_HISTORY"/>
+          <NavigationPropertyBinding Path="tab1topdf" Target="attachments"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtovenr/venrtovend" Target="tab1/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtovenr/SiblingEntity" Target="tab1/tab1tovendor_data/vendtovenr"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtoptd/ptdtovend" Target="tab1/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtoptd/SiblingEntity" Target="tab1/tab1tovendor_data/vendtoptd"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtopd/pdtovend" Target="tab1/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtopd/SiblingEntity" Target="tab1/tab1tovendor_data/vendtopd"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendor_datatotab1" Target="tab1"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/SiblingEntity" Target="tab1/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tocom/comtotab1" Target="tab1"/>
+          <NavigationPropertyBinding Path="tab1tocom/SiblingEntity" Target="tab1/tab1tocom"/>
+          <NavigationPropertyBinding Path="SiblingEntity" Target="tab1"/>
+        </EntitySet>
+        <EntitySet Name="attachments" EntityType="CatalogService.attachments">
+          <NavigationPropertyBinding Path="pdftotab1" Target="tab1"/>
+        </EntitySet>
+        <EntitySet Name="PAN_Payment_Method_Drop" EntityType="CatalogService.PAN_Payment_Method_Drop"/>
+        <FunctionImport Name="sendforapproval" Function="CatalogService.sendforapproval"/>
+        <FunctionImport Name="InsertData" Function="CatalogService.InsertData"/>
+        <FunctionImport Name="getData" Function="CatalogService.getData"/>
+        <FunctionImport Name="switch_control" Function="CatalogService.switch_control"/>
+        <FunctionImport Name="getuserinfo" Function="CatalogService.getuserinfo"/>
+        <FunctionImport Name="getcomments" Function="CatalogService.getcomments"/>
+        <FunctionImport Name="getsync" Function="CatalogService.getsync"/>
+        <FunctionImport Name="draft" Function="CatalogService.draft"/>
+        <FunctionImport Name="Listdata" Function="CatalogService.Listdata"/>
+        <FunctionImport Name="flag" Function="CatalogService.flag"/>
+        <FunctionImport Name="updatee" Function="CatalogService.updatee"/>
+      </EntityContainer>
+      <EntityType Name="tab1">
+        <Key>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false" DefaultValue="def"/>
+        <Property Name="SBG" Type="Edm.String"/>
+        <Property Name="SBU" Type="Edm.String"/>
+        <Property Name="BUORPurchasing_Group" Type="Edm.String"/>
+        <Property Name="Plant_Code" Type="Edm.String"/>
+        <Property Name="Project_Description" Type="Edm.String"/>
+        <Property Name="PR_NumberBKTsBKT" Type="Edm.String"/>
+        <Property Name="Subject_of_ProposalOROrder" Type="Edm.String"/>
+        <Property Name="Previous_PAN_References" Type="Edm.String"/>
+        <Property Name="Split_OrderORNo_of_vendors" Type="Edm.String"/>
+        <Property Name="SOP_Type" Type="Edm.String"/>
+        <Property Name="Order_Type_OR_Document_tyFuuidpe" Type="Edm.String"/>
+        <Property Name="Asset_Type" Type="Edm.String"/>
+        <Property Name="Nature_of_Transaction" Type="Edm.String"/>
+        <Property Name="Order_Location_OR_Plant" Type="Edm.String"/>
+        <Property Name="Base_line_spend" Type="Edm.String"/>
+        <Property Name="Project_CurrencyORBase_Currency" Type="Edm.String"/>
+        <Property Name="Order_CurrencyORBid_currency" Type="Edm.String"/>
+        <Property Name="Final_proposed_Value" Type="Edm.String"/>
+        <Property Name="Savings_achieved_btw_initial_and_final_quote" Type="Edm.String"/>
+        <Property Name="Savings_against_base_line_spend_of_RFP" Type="Edm.String"/>
+        <Property Name="Number_of_Vendors_Shortlisted_for_RFP" Type="Edm.String"/>
+        <Property Name="Number_of_Vendors_Technically_Qualified" Type="Edm.String"/>
+        <Property Name="Required_at_Site_Date" Type="Edm.String"/>
+        <Property Name="RFP_Number" Type="Edm.String"/>
+        <Property Name="RFP_Publish_Date" Type="Edm.String"/>
+        <Property Name="Time_Taken_for_FinalizationDASHIn_DAYS" Type="Edm.String"/>
+        <Property Name="status" Type="Edm.String"/>
+        <Property Name="statusInd" Type="Edm.Int32"/>
+        <Property Name="created_by" Type="Edm.String"/>
+        <Property Name="task_id" Type="Edm.String"/>
+        <Property Name="type" Type="Edm.String"/>
+        <Property Name="status_a" Type="Edm.String"/>
+        <Property Name="switch_control" Type="Edm.Boolean" DefaultValue="false"/>
+        <Property Name="ProjectId" Type="Edm.String"/>
+        <Property Name="number_of_vendors_invited" Type="Edm.String"/>
+        <Property Name="total_levels_of_approval" Type="Edm.String" MaxLength="2"/>
+        <Property Name="Current_level_of_approval" Type="Edm.String" MaxLength="2"/>
+        <Property Name="Sap_workitem_id" Type="Edm.String"/>
+        <Property Name="Comments" Type="Edm.String"/>
+        <Property Name="submitted_by" Type="Edm.String"/>
+        <Property Name="submitted_date" Type="Edm.String"/>
+        <NavigationProperty Name="tab1totab2" Type="Collection(CatalogService.tab2)" Partner="tab2totab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1totab3" Type="Collection(CatalogService.tab3)" Partner="tab3totab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1toWORKFLOW_HISTORY" Type="Collection(CatalogService.WORKFLOW_HISTORY)" Partner="WORKFLOW_HISTORYtotab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1topdf" Type="Collection(CatalogService.attachments)"/>
+        <NavigationProperty Name="tab1tovendor_data" Type="Collection(CatalogService.vendor_data)" Partner="vendor_datatotab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1tocom" Type="Collection(CatalogService.PAN_Comments)" Partner="comtotab1" ContainsTarget="true"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.tab1"/>
+      </EntityType>
+      <EntityType Name="tab2">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="idd" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="eventNo" Type="Edm.String"/>
+        <Property Name="number" Type="Edm.String"/>
+        <Property Name="date" Type="Edm.String"/>
+        <Property Name="numberOfVendorsParticipated" Type="Edm.String"/>
+        <Property Name="l1AmountObtained" Type="Edm.String"/>
+        <NavigationProperty Name="tab2totab1" Type="CatalogService.tab1" Partner="tab1totab2"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.tab2"/>
+      </EntityType>
+      <EntityType Name="tab3">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="idd" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="typeNo" Type="Edm.String"/>
+        <Property Name="required" Type="Edm.String"/>
+        <Property Name="submittedOn" Type="Edm.String"/>
+        <Property Name="receivedOn" Type="Edm.String"/>
+        <Property Name="timeTakenForApproval" Type="Edm.String"/>
+        <NavigationProperty Name="tab3totab1" Type="CatalogService.tab1" Partner="tab1totab3"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.tab3"/>
+      </EntityType>
+      <EntityType Name="vendor_data">
+        <Key>
+          <PropertyRef Name="Proposed_Vendor_Code"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Awarded_Vendor" Type="Edm.String"/>
+        <Property Name="Vendor_Name" Type="Edm.String"/>
+        <Property Name="Vendor_Location" Type="Edm.String"/>
+        <Property Name="Technically_Approved" Type="Edm.String"/>
+        <Property Name="Client_Approved" Type="Edm.String"/>
+        <Property Name="Original_quote" Type="Edm.String"/>
+        <Property Name="Final_Quote" Type="Edm.String"/>
+        <Property Name="Order_amount_OR_Split_order_amount" Type="Edm.String"/>
+        <Property Name="Discount_Amount" Type="Edm.String"/>
+        <Property Name="Discount_percentage" Type="Edm.String"/>
+        <Property Name="Rank" Type="Edm.String"/>
+        <Property Name="Proposed_Vendor_Name" Type="Edm.String"/>
+        <Property Name="Supplier_Origin_State" Type="Edm.String"/>
+        <Property Name="Destination_State_BKTShipDASHto_LocationBKT" Type="Edm.String"/>
+        <Property Name="Vendor_GST_Number" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH1" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH2" Type="Edm.String"/>
+        <Property Name="Technical_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Commercial_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Vendor_References_to_be_displayed_in_Order" Type="Edm.String"/>
+        <Property Name="Shortlisted_Vendors_Response_summary" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Project_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Bid_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Amount" Type="Edm.String"/>
+        <Property Name="Project_CurrencyORBase_Currency" Type="Edm.String"/>
+        <Property Name="Order_CurrencyORBid_currency" Type="Edm.String"/>
+        <Property Name="Incoterms" Type="Edm.String"/>
+        <Property Name="Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC" Type="Edm.String"/>
+        <Property Name="Details_of_deviated_or_better_terms_agreed_with_the_Vendor" Type="Edm.String"/>
+        <Property Name="Market_Scenario_and_Demand" Type="Edm.String"/>
+        <Property Name="Companys_Position_and_Market_dynamics_of_this_purchase" Type="Edm.String"/>
+        <Property Name="Should_Be_Cost_estimated" Type="Edm.String"/>
+        <Property Name="Highlights_of_this_proposal_and_Price_Justification_for_this_proposal" Type="Edm.String"/>
+        <Property Name="Price_Escalation_Agreed_if_any" Type="Edm.String"/>
+        <Property Name="Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor" Type="Edm.String"/>
+        <Property Name="Transportation" Type="Edm.String"/>
+        <Property Name="Logistics_Cost" Type="Edm.String"/>
+        <Property Name="Delivery_Schedule" Type="Edm.String"/>
+        <Property Name="Tax_Details" Type="Edm.String"/>
+        <Property Name="Additional_Remarks" Type="Edm.String"/>
+        <Property Name="ABG" Type="Edm.String"/>
+        <Property Name="ABG_Value" Type="Edm.String"/>
+        <Property Name="CPBG" Type="Edm.String"/>
+        <Property Name="CPBG_Value" Type="Edm.String"/>
+        <Property Name="Scope_and_Responsibilities" Type="Edm.String"/>
+        <Property Name="Commercial_Terms" Type="Edm.String"/>
+        <Property Name="Compliance_Terms" Type="Edm.String"/>
+        <Property Name="Others" Type="Edm.String"/>
+        <NavigationProperty Name="vendtovenr" Type="Collection(CatalogService.Fvendor_responseoo)" Partner="venrtovend" ContainsTarget="true"/>
+        <NavigationProperty Name="vendtoptd" Type="Collection(CatalogService.PAYMENT_TERM_DETAILS)" Partner="ptdtovend" ContainsTarget="true"/>
+        <NavigationProperty Name="vendtopd" Type="Collection(CatalogService.PAN_PRICE_DETAILS)" Partner="pdtovend" ContainsTarget="true"/>
+        <NavigationProperty Name="vendor_datatotab1" Type="CatalogService.tab1" Partner="tab1tovendor_data"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.vendor_data"/>
+      </EntityType>
+      <EntityType Name="Fvendor_responseoo">
+        <Key>
+          <PropertyRef Name="Proposed_Vendor_Code"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Proposed_Vendor_Name" Type="Edm.String"/>
+        <Property Name="Supplier_Origin_State" Type="Edm.String"/>
+        <Property Name="Destination_State_BKTShipDASHto_LocationBKT" Type="Edm.String"/>
+        <Property Name="Vendor_GST_Number" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Date" Type="Edm.Date"/>
+        <Property Name="Vendor_PE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH1" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH2" Type="Edm.String"/>
+        <Property Name="Technical_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Commercial_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Vendor_References_to_be_displayed_in_Order" Type="Edm.String"/>
+        <Property Name="Shortlisted_Vendors_Response_summary" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Project_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Bid_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Amount" Type="Edm.String"/>
+        <Property Name="Project_CurrencyORBase_Currency" Type="Edm.String"/>
+        <Property Name="Order_CurrencyORBid_currency" Type="Edm.String"/>
+        <Property Name="Incoterms" Type="Edm.String"/>
+        <Property Name="Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC" Type="Edm.String"/>
+        <Property Name="Details_of_deviated_or_better_terms_agreed_with_the_Vendor" Type="Edm.String"/>
+        <Property Name="Market_Scenario_and_Demand" Type="Edm.String"/>
+        <Property Name="Companys_Position_and_Market_dynamics_of_this_purchase" Type="Edm.String"/>
+        <Property Name="Should_Be_Cost_estimated" Type="Edm.String"/>
+        <Property Name="Highlights_of_this_proposal_and_Price_Justification_for_this_proposal" Type="Edm.String"/>
+        <Property Name="Price_Escalation_Agreed_if_any" Type="Edm.String"/>
+        <Property Name="Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor" Type="Edm.String"/>
+        <Property Name="Transportation" Type="Edm.String"/>
+        <Property Name="Logistics_Cost" Type="Edm.String"/>
+        <Property Name="Delivery_Schedule" Type="Edm.String"/>
+        <Property Name="Tax_Details" Type="Edm.String"/>
+        <Property Name="Additional_Remarks" Type="Edm.String"/>
+        <Property Name="ABG" Type="Edm.String"/>
+        <Property Name="ABG_Value" Type="Edm.String"/>
+        <Property Name="CPBG" Type="Edm.String"/>
+        <Property Name="CPBG_Value" Type="Edm.String"/>
+        <Property Name="Scope_and_Responsibilities" Type="Edm.String"/>
+        <Property Name="Commercial_Terms" Type="Edm.String"/>
+        <Property Name="Compliance_Terms" Type="Edm.String"/>
+        <Property Name="Others" Type="Edm.String"/>
+        <NavigationProperty Name="venrtovend" Type="CatalogService.vendor_data" Partner="vendtovenr"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.Fvendor_responseoo"/>
+      </EntityType>
+      <EntityType Name="PAYMENT_TERM_DETAILS">
+        <Key>
+          <PropertyRef Name="ptdkey"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="ptdkey" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String"/>
+        <Property Name="PAN_Number" Type="Edm.String"/>
+        <Property Name="iddd" Type="Edm.String"/>
+        <Property Name="slNo" Type="Edm.Int32"/>
+        <Property Name="Payment_methord" Type="Edm.String" DefaultValue="RTGS payment"/>
+        <Property Name="Percentage" Type="Edm.String"/>
+        <Property Name="Description" Type="Edm.String"/>
+        <Property Name="Due_date" Type="Edm.String"/>
+        <Property Name="Mandatory_Documents_OR_Submissions" Type="Edm.String"/>
+        <Property Name="To_be_certified_in_Company" Type="Edm.String"/>
+        <NavigationProperty Name="ptdtovend" Type="CatalogService.vendor_data" Partner="vendtoptd"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.PAYMENT_TERM_DETAILS"/>
+      </EntityType>
+      <EntityType Name="PAN_PRICE_DETAILS">
+        <Key>
+          <PropertyRef Name="pdkey"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="pdkey" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String"/>
+        <Property Name="PAN_Number" Type="Edm.String"/>
+        <Property Name="Item_Code" Type="Edm.String"/>
+        <Property Name="HSN_OR_SAC_Code" Type="Edm.String"/>
+        <Property Name="extendedPrice" Type="Edm.String"/>
+        <Property Name="Item_Short_Description" Type="Edm.String"/>
+        <Property Name="UOM" Type="Edm.String"/>
+        <Property Name="Quantity" Type="Edm.String"/>
+        <Property Name="Unit_Price" Type="Edm.String"/>
+        <Property Name="Amount" Type="Edm.String"/>
+        <Property Name="Indian_Tax_PER" Type="Edm.String"/>
+        <Property Name="Quantity_Over_Delivery_Tolerance" Type="Edm.String"/>
+        <NavigationProperty Name="pdtovend" Type="CatalogService.vendor_data" Partner="vendtopd"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.PAN_PRICE_DETAILS"/>
+      </EntityType>
+      <EntityType Name="WORKFLOW_HISTORY">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="idd" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Employee_ID" Type="Edm.String"/>
+        <Property Name="level" Type="Edm.String"/>
+        <Property Name="Approved_by" Type="Edm.String"/>
+        <Property Name="Employee_Name" Type="Edm.String"/>
+        <Property Name="Title" Type="Edm.String"/>
+        <Property Name="Notification_Status" Type="Edm.String"/>
+        <Property Name="Result" Type="Edm.String"/>
+        <Property Name="Begin_DateAND_Time" Type="Edm.String"/>
+        <Property Name="End_DateAND_Time" Type="Edm.String"/>
+        <Property Name="Days_Taken" Type="Edm.String"/>
+        <Property Name="Remarks" Type="Edm.String"/>
+        <NavigationProperty Name="WORKFLOW_HISTORYtotab1" Type="CatalogService.tab1" Partner="tab1toWORKFLOW_HISTORY"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.WORKFLOW_HISTORY"/>
+      </EntityType>
+      <EntityType Name="attachments">
+        <Key>
+          <PropertyRef Name="ID"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="content" Type="Edm.Stream"/>
+        <Property Name="mediaType" Type="Edm.String"/>
+        <Property Name="fileName" Type="Edm.String"/>
+        <Property Name="size" Type="Edm.Int32"/>
+        <Property Name="url" Type="Edm.String"/>
+        <NavigationProperty Name="pdftotab1" Type="CatalogService.tab1">
+          <ReferentialConstraint Property="PAN_Number" ReferencedProperty="PAN_Number"/>
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="PAN_Payment_Method_Drop">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Payment_method" Type="Edm.String"/>
+      </EntityType>
+      <EntityType Name="PAN_Comments">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="idd" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="user" Type="Edm.String"/>
+        <Property Name="Comments" Type="Edm.String"/>
+        <Property Name="status" Type="Edm.String"/>
+        <NavigationProperty Name="comtotab1" Type="CatalogService.tab1" Partner="tab1tocom"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="CatalogService.DraftAdministrativeData" ContainsTarget="true"/>
+        <NavigationProperty Name="SiblingEntity" Type="CatalogService.PAN_Comments"/>
+      </EntityType>
+      <EntityType Name="DraftAdministrativeData">
+        <Key>
+          <PropertyRef Name="DraftUUID"/>
+        </Key>
+        <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+        <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+      </EntityType>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.tab1"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.tab1"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.tab2"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.tab2"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.tab3"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.tab3"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.vendor_data"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.vendor_data"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.Fvendor_responseoo"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.Fvendor_responseoo"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.PAYMENT_TERM_DETAILS"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.PAYMENT_TERM_DETAILS"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.PAN_PRICE_DETAILS"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.PAN_PRICE_DETAILS"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.WORKFLOW_HISTORY"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.WORKFLOW_HISTORY"/>
+      </Action>
+      <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.PAN_Comments"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="CatalogService.PAN_Comments"/>
+      </Action>
+      <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.tab1"/>
+        <ReturnType Type="CatalogService.tab1"/>
+      </Action>
+      <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+        <Parameter Name="in" Type="CatalogService.tab1"/>
+        <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+        <ReturnType Type="CatalogService.tab1"/>
+      </Action>
+      <Function Name="sendforapproval" IsBound="false" IsComposable="false">
+        <Parameter Name="data" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="InsertData" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getData" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="switch_control" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getuserinfo" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getcomments" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getsync" IsBound="false" IsComposable="false">
+        <Parameter Name="data" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="draft" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="Listdata" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="flag" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <Parameter Name="case" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="updatee" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Annotations Target="CatalogService.tab1">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="PAN_Number"/>
+              <PropertyValue Property="Label" String="PAN Number"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="SBG"/>
+              <PropertyValue Property="Label" String="SBG"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="SBU"/>
+              <PropertyValue Property="Label" String="SBU"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="BUORPurchasing_Group"/>
+              <PropertyValue Property="Label" String="BU/Purchasing Group"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Plant_Code"/>
+              <PropertyValue Property="Label" String="Plant Code"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="status"/>
+              <PropertyValue Property="Label" String="Status"/>
+              <PropertyValue Property="Criticality" Path="statusInd"/>
+              <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithIcon"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.SelectionPresentationVariant" Qualifier="tableView">
+          <Record Type="UI.SelectionPresentationVariantType">
+            <PropertyValue Property="PresentationVariant">
+              <Record Type="UI.PresentationVariantType">
+                <PropertyValue Property="Visualizations">
+                  <Collection>
+                    <AnnotationPath>@UI.LineItem</AnnotationPath>
+                  </Collection>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="SelectionVariant">
+              <Record Type="UI.SelectionVariantType">
+                <PropertyValue Property="SelectOptions">
+                  <Collection/>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Text" String="Table View"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.LineItem" Qualifier="tableView">
+          <Collection/>
+        </Annotation>
+        <Annotation Term="UI.SelectionPresentationVariant" Qualifier="tableView1">
+          <Record Type="UI.SelectionPresentationVariantType">
+            <PropertyValue Property="PresentationVariant">
+              <Record Type="UI.PresentationVariantType">
+                <PropertyValue Property="Visualizations">
+                  <Collection>
+                    <AnnotationPath>@UI.LineItem#tableView</AnnotationPath>
+                  </Collection>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="SelectionVariant">
+              <Record Type="UI.SelectionVariantType">
+                <PropertyValue Property="SelectOptions">
+                  <Collection/>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Text" String="Table View 1"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.HeaderInfo">
+          <Record Type="UI.HeaderInfoType">
+            <PropertyValue Property="TypeName" String="PAN Details"/>
+            <PropertyValue Property="TypeNamePlural" String="PAN Details"/>
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="PAN_Number"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.Facets">
+          <Collection>
+            <Record Type="UI.CollectionFacet">
+              <PropertyValue Property="Label" String="General Details"/>
+              <PropertyValue Property="ID" String="GeneralDetails1"/>
+              <PropertyValue Property="Facets">
+                <Collection>
+                  <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="ID" String="GeneralDetails"/>
+                    <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GeneralDetails"/>
+                  </Record>
+                  <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="Label" String="WEB EVENT"/>
+                    <PropertyValue Property="ID" String="_"/>
+                    <PropertyValue Property="Target" AnnotationPath="tab1totab2/@UI.LineItem#_"/>
+                  </Record>
+                  <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="Label" String="TYPE"/>
+                    <PropertyValue Property="ID" String="TYPE"/>
+                    <PropertyValue Property="Target" AnnotationPath="tab1totab3/@UI.LineItem#TYPE"/>
+                  </Record>
+                </Collection>
+              </PropertyValue>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Vendor Details"/>
+              <PropertyValue Property="ID" String="VendorData"/>
+              <PropertyValue Property="Target" AnnotationPath="tab1tovendor_data/@UI.LineItem#VendorData"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Justification"/>
+              <PropertyValue Property="ID" String="Justification"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Justification"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="GeneralDetails">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="PAN_Number"/>
+                  <PropertyValue Property="Label" String="PAN Number"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="SBG"/>
+                  <PropertyValue Property="Label" String="SBG"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="SBU"/>
+                  <PropertyValue Property="Label" String="SBU"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="BUORPurchasing_Group"/>
+                  <PropertyValue Property="Label" String="BU/Purchasing Group"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Plant_Code"/>
+                  <PropertyValue Property="Label" String="Plant Code"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Project_Description"/>
+                  <PropertyValue Property="Label" String="Project Description"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="PR_NumberBKTsBKT"/>
+                  <PropertyValue Property="Label" String="PR Number(s)"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Subject_of_ProposalOROrder"/>
+                  <PropertyValue Property="Label" String="Subject of Proposal/Order"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Previous_PAN_References"/>
+                  <PropertyValue Property="Label" String="Previous PAN References"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Split_OrderORNo_of_vendors"/>
+                  <PropertyValue Property="Label" String="Split Order/No of vendors"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Order_Location_OR_Plant"/>
+                  <PropertyValue Property="Label" String="Order Location / Plant"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Base_line_spend"/>
+                  <PropertyValue Property="Label" String="Base line spend"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Project_CurrencyORBase_Currency"/>
+                  <PropertyValue Property="Label" String="Project Currency/Base Currency"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Order_CurrencyORBid_currency"/>
+                  <PropertyValue Property="Label" String="Order Currency/Bid currency"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Final_proposed_Value"/>
+                  <PropertyValue Property="Label" String="Final proposed Value"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Savings_achieved_btw_initial_and_final_quote"/>
+                  <PropertyValue Property="Label" String="Savings achieved btw initial and final quote"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Savings_against_base_line_spend_of_RFP"/>
+                  <PropertyValue Property="Label" String="Savings against base line spend of RFP"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Number_of_Vendors_Shortlisted_for_RFP"/>
+                  <PropertyValue Property="Label" String="Number of Vendors Shortlisted for RFP"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Number_of_Vendors_Technically_Qualified"/>
+                  <PropertyValue Property="Label" String="Number of Vendors Technically Qualified"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Required_at_Site_Date"/>
+                  <PropertyValue Property="Label" String="Required at Site Date"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="RFP_Number"/>
+                  <PropertyValue Property="Label" String="RFP Number"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="RFP_Publish_Date"/>
+                  <PropertyValue Property="Label" String="RFP Publish Date"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Time_Taken_for_FinalizationDASHIn_DAYS"/>
+                  <PropertyValue Property="Label" String="Time Taken for Finalization-In DAYS"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="status"/>
+                  <PropertyValue Property="Label" String="status"/>
+                  <Annotation Term="UI.Hidden" Bool="true"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="number_of_vendors_invited"/>
+                  <PropertyValue Property="Label" String="Number Of Vendors Invited"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="Justification">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Comments"/>
+                  <PropertyValue Property="Label" String="Comments"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.SemanticKey">
+          <Collection>
+            <PropertyPath>PAN_Number</PropertyPath>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.EntityContainer/tab1">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.SelectionPresentationVariant" Qualifier="tableView">
+          <Record Type="UI.SelectionPresentationVariantType">
+            <PropertyValue Property="PresentationVariant">
+              <Record Type="UI.PresentationVariantType">
+                <PropertyValue Property="Visualizations">
+                  <Collection>
+                    <AnnotationPath>@UI.LineItem</AnnotationPath>
+                  </Collection>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="SelectionVariant">
+              <Record Type="UI.SelectionVariantType">
+                <PropertyValue Property="SelectOptions">
+                  <Collection/>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Text" String="Table View"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.SelectionPresentationVariant" Qualifier="tableView1">
+          <Record Type="UI.SelectionPresentationVariantType">
+            <PropertyValue Property="PresentationVariant">
+              <Record Type="UI.PresentationVariantType">
+                <PropertyValue Property="Visualizations">
+                  <Collection>
+                    <AnnotationPath>@UI.LineItem#tableView</AnnotationPath>
+                  </Collection>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="SelectionVariant">
+              <Record Type="UI.SelectionVariantType">
+                <PropertyValue Property="SelectOptions">
+                  <Collection/>
+                </PropertyValue>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Text" String="Table View 1"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.DraftRoot">
+          <Record Type="Common.DraftRootType">
+            <PropertyValue Property="ActivationAction" String="CatalogService.draftActivate"/>
+            <PropertyValue Property="EditAction" String="CatalogService.draftEdit"/>
+            <PropertyValue Property="PreparationAction" String="CatalogService.draftPrepare"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/PAN_Number">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/SBG">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/SBU">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/BUORPurchasing_Group">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Plant_Code">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Project_Description">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/PR_NumberBKTsBKT">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Subject_of_ProposalOROrder">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Split_OrderORNo_of_vendors">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Base_line_spend">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Project_CurrencyORBase_Currency">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Order_CurrencyORBid_currency">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Final_proposed_Value">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Savings_achieved_btw_initial_and_final_quote">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Savings_against_base_line_spend_of_RFP">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Number_of_Vendors_Shortlisted_for_RFP">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/RFP_Number">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/RFP_Publish_Date">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/Comments">
+        <Annotation Term="UI.MultiLineText" Bool="true"/>
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab1/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2">
+        <Annotation Term="UI.LineItem" Qualifier="_">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="eventNo"/>
+              <PropertyValue Property="Label" String="Event No"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="number"/>
+              <PropertyValue Property="Label" String="Doc ID"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="date"/>
+              <PropertyValue Property="Label" String="DATE"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="numberOfVendorsParticipated"/>
+              <PropertyValue Property="Label" String="Number Of Vendors Participated"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="l1AmountObtained"/>
+              <PropertyValue Property="Label" String="L1 Amount Obtained"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/eventNo">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/number">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/date">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/numberOfVendorsParticipated">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/l1AmountObtained">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab2/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3">
+        <Annotation Term="UI.LineItem" Qualifier="TYPE">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="typeNo"/>
+              <PropertyValue Property="Label" String="Type"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="required"/>
+              <PropertyValue Property="Label" String="Required"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="submittedOn"/>
+              <PropertyValue Property="Label" String="Submitted on"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="receivedOn"/>
+              <PropertyValue Property="Label" String="Received on"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="timeTakenForApproval"/>
+              <PropertyValue Property="Label" String="Time Taken for Approval"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/typeNo">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/required">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/submittedOn">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/receivedOn">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/timeTakenForApproval">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.tab3/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.LineItem" Qualifier="VendorData">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Awarded_Vendor"/>
+              <PropertyValue Property="Label" String="Awarded Vendor"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Vendor_Name"/>
+              <PropertyValue Property="Label" String="Vendor Name"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Original_quote"/>
+              <PropertyValue Property="Label" String="Original quote"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Final_Quote"/>
+              <PropertyValue Property="Label" String="Final Quote"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Vendor_Location"/>
+              <PropertyValue Property="Label" String="Awarded Value"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Technically_Approved"/>
+              <PropertyValue Property="Label" String="Technically Approved"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Order_amount_OR_Split_order_amount"/>
+              <PropertyValue Property="Label" String="Order amount OR Split order amount"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Discount_Amount"/>
+              <PropertyValue Property="Label" String="Discount Amount"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Discount_percentage"/>
+              <PropertyValue Property="Label" String="Discount percentage"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Rank"/>
+              <PropertyValue Property="Label" String="Rank"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.HeaderInfo">
+          <Record Type="UI.HeaderInfoType">
+            <PropertyValue Property="TypeName" String="Vendor Details"/>
+            <PropertyValue Property="TypeNamePlural" String="Vendor Details"/>
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="Proposed_Vendor_Code"/>
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Description">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="Vendor_Name"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.Facets">
+          <Collection>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Vendor Response"/>
+              <PropertyValue Property="ID" String="VendorResponse"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VendorResponse"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Terms and Conditions Compared with"/>
+              <PropertyValue Property="ID" String="TermsandConditionsComparedwith"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TermsandConditionsComparedwith"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Payment Term Details"/>
+              <PropertyValue Property="ID" String="PAYMENT_TERM_DETAILS"/>
+              <PropertyValue Property="Target" AnnotationPath="vendtoptd/@UI.LineItem#PAYMENT_TERM_DETAILS"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Others Terms And Conditions"/>
+              <PropertyValue Property="ID" String="OTHERSTERMSANDCONDITIONS"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#OTHERSTERMSANDCONDITIONS"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+              <PropertyValue Property="Label" String="Price Details"/>
+              <PropertyValue Property="ID" String="PRICEDETAILS"/>
+              <PropertyValue Property="Target" AnnotationPath="vendtopd/@UI.LineItem#PAN_PRICE_DETAILS"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="VendorResponse">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Proposed_Vendor_Name"/>
+                  <PropertyValue Property="Label" String="Proposed Vendor Name"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Supplier_Origin_State"/>
+                  <PropertyValue Property="Label" String="Supplier Origin State"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Destination_State_BKTShipDASHto_LocationBKT"/>
+                  <PropertyValue Property="Label" String="Destination State (Ship-to Location)"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_GST_Number"/>
+                  <PropertyValue Property="Label" String="Vendor GST Number"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_CE_Score"/>
+                  <PropertyValue Property="Label" String="Vendor CE Score"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_CE_Date"/>
+                  <PropertyValue Property="Label" String="Vendor CE Date"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_PE_Score"/>
+                  <PropertyValue Property="Label" String="Vendor PE Score"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_PE_Date"/>
+                  <PropertyValue Property="Label" String="Vendor PE Date"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_Contact_PersonDASH1"/>
+                  <PropertyValue Property="Label" String="Vendor Contact Person 1"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_Contact_PersonDASH2"/>
+                  <PropertyValue Property="Label" String="Vendor Contact Person 2"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Technical_Committee_who_cleared_the_proposal"/>
+                  <PropertyValue Property="Label" String="Technical Committee who cleared the proposal"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Commercial_Committee_who_cleared_the_proposal"/>
+                  <PropertyValue Property="Label" String="Commercial Committee who cleared the proposal"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_References_to_be_displayed_in_Order"/>
+                  <PropertyValue Property="Label" String="Vendor References to be displayed in Order"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Incoterms"/>
+                  <PropertyValue Property="Label" String="Incoterms"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Order_Value_BKTIn_Bid_CurrencyBKT"/>
+                  <PropertyValue Property="Label" String="Order Value (In Bid Currency)"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Order_Value_BKTIn_Project_CurrencyBKT"/>
+                  <PropertyValue Property="Label" String="Order Value (In Project Currency)"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_Final_Quotation_Amount"/>
+                  <PropertyValue Property="Label" String="Vendor Final Quotation Amount"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_Final_Quotation_Date"/>
+                  <PropertyValue Property="Label" String="Vendor Final Quotation Date"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Project_CurrencyORBase_Currency"/>
+                  <PropertyValue Property="Label" String="Project Currency/Base Currency"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Order_CurrencyORBid_currency"/>
+                  <PropertyValue Property="Label" String="Order Currency/Bid Currency"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="TermsandConditionsComparedwith">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC"/>
+                  <PropertyValue Property="Label" String="Number of Back to back Terms agreed with Vendor as per GPC / GCC"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Details_of_deviated_or_better_terms_agreed_with_the_Vendor"/>
+                  <PropertyValue Property="Label" String="Details of deviated or better terms agreed with the Vendor"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Market_Scenario_and_Demand"/>
+                  <PropertyValue Property="Label" String="Market Scenario and Demand"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Companys_Position_and_Market_dynamics_of_this_purchase"/>
+                  <PropertyValue Property="Label" String="Companys Position and Market dynamics of this purchase"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Should_Be_Cost_estimated"/>
+                  <PropertyValue Property="Label" String="Should Be Cost estimated"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Highlights_of_this_proposal_and_Price_Justification_for_this_proposal"/>
+                  <PropertyValue Property="Label" String="Highlights of this proposal and Price Justification for this proposal"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Price_Escalation_Agreed_if_any"/>
+                  <PropertyValue Property="Label" String="Price Escalation Agreed if any"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor"/>
+                  <PropertyValue Property="Label" String="Particulars of any Free Service / Supply Guarantees / Warrant yfrom Vendor"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Transportation"/>
+                  <PropertyValue Property="Label" String="Transportation"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Logistics_Cost"/>
+                  <PropertyValue Property="Label" String="Logistics Cost"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Delivery_Schedule"/>
+                  <PropertyValue Property="Label" String="Delivery Schedule"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Tax_Details"/>
+                  <PropertyValue Property="Label" String="Tax Details"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Additional_Remarks"/>
+                  <PropertyValue Property="Label" String="Additional Remarks"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="ABG"/>
+                  <PropertyValue Property="Label" String="ABG"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="ABG_Value"/>
+                  <PropertyValue Property="Label" String="ABG Value"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="CPBG"/>
+                  <PropertyValue Property="Label" String="CPBG"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="CPBG_Value"/>
+                  <PropertyValue Property="Label" String="CPBG Value"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="OTHERSTERMSANDCONDITIONS">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Scope_and_Responsibilities"/>
+                  <PropertyValue Property="Label" String="Scope and Responsibilities"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Commercial_Terms"/>
+                  <PropertyValue Property="Label" String="Commercial Terms"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Compliance_Terms"/>
+                  <PropertyValue Property="Label" String="Compliance Terms"/>
+                </Record>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Others"/>
+                  <PropertyValue Property="Label" String="Others"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.HeaderFacets">
+          <Collection/>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="VenorName">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="Vendor_Name"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Proposed_Vendor_Code">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Awarded_Vendor">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Vendor_Name">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Vendor_Location">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Technically_Approved">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Original_quote">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Final_Quote">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Order_amount_OR_Split_order_amount">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Discount_Amount">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Discount_percentage">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Rank">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Proposed_Vendor_Name">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Destination_State_BKTShipDASHto_LocationBKT">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Vendor_GST_Number">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Vendor_CE_Score">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Vendor_Contact_PersonDASH1">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Shortlisted_Vendors_Response_summary">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Incoterms">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Delivery_Schedule">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/ABG">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/CPBG">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Scope_and_Responsibilities">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+        <Annotation Term="UI.MultiLineText" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Commercial_Terms">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+        <Annotation Term="UI.MultiLineText" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Compliance_Terms">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+        <Annotation Term="UI.MultiLineText" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/Others">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+        <Annotation Term="UI.MultiLineText" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.vendor_data/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.Fvendor_responseoo/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.Fvendor_responseoo/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.Fvendor_responseoo/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.Fvendor_responseoo/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS">
+        <Annotation Term="UI.PresentationVariant">
+          <Record Type="UI.PresentationVariantType">
+            <PropertyValue Property="Visualizations">
+              <Collection>
+                <AnnotationPath>@UI.LineItem#PAYMENT_TERM_DETAILS</AnnotationPath>
+              </Collection>
+            </PropertyValue>
+            <PropertyValue Property="SortOrder">
+              <Collection>
+                <Record Type="Common.SortOrderType">
+                  <PropertyValue Property="Property" PropertyPath="slNo"/>
+                  <PropertyValue Property="Descending" Bool="true"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.LineItem" Qualifier="PAYMENT_TERM_DETAILS">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="slNo"/>
+              <PropertyValue Property="Label" String="slNo"/>
+              <Annotation Term="UI.Hidden" Bool="true"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="iddd"/>
+              <PropertyValue Property="Label" String="Payment Terms"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Percentage"/>
+              <PropertyValue Property="Label" String="Percentage"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Description"/>
+              <PropertyValue Property="Label" String="Description"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Due_date"/>
+              <PropertyValue Property="Label" String="Due date"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Mandatory_Documents_OR_Submissions"/>
+              <PropertyValue Property="Label" String="Mandatory Documents / Submissions"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="To_be_certified_in_Company"/>
+              <PropertyValue Property="Label" String="To be Certified in Company"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Payment_methord"/>
+              <PropertyValue Property="Label" String="Payment Methord"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/ptdkey">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/iddd">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/Payment_methord">
+        <Annotation Term="Common.ValueList">
+          <Record Type="Common.ValueListType">
+            <PropertyValue Property="CollectionPath" String="PAN_Payment_Method_Drop"/>
+            <PropertyValue Property="Parameters">
+              <Collection>
+                <Record Type="Common.ValueListParameterInOut">
+                  <PropertyValue Property="LocalDataProperty" PropertyPath="Payment_methord"/>
+                  <PropertyValue Property="ValueListProperty" String="Payment_method"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+            <PropertyValue Property="Label" String="search_help"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/Percentage">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/Description">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/Due_date">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/Mandatory_Documents_OR_Submissions">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/To_be_certified_in_Company">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAYMENT_TERM_DETAILS/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.LineItem" Qualifier="PAN_PRICE_DETAILS">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Item_Code"/>
+              <PropertyValue Property="Label" String="Item Code"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="HSN_OR_SAC_Code"/>
+              <PropertyValue Property="Label" String="HSN / SAC Code"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Item_Short_Description"/>
+              <PropertyValue Property="Label" String="Item Short Description"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="UOM"/>
+              <PropertyValue Property="Label" String="UOM"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Quantity"/>
+              <PropertyValue Property="Label" String="Quantity"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Unit_Price"/>
+              <PropertyValue Property="Label" String="Unit Price"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Amount"/>
+              <PropertyValue Property="Label" String="Amount"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Indian_Tax_PER"/>
+              <PropertyValue Property="Label" String="Indian Tax %"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Quantity_Over_Delivery_Tolerance"/>
+              <PropertyValue Property="Label" String="Quantity Over Delivery tolerance"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/pdkey">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/Item_Code">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/HSN_OR_SAC_Code">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/Item_Short_Description">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/UOM">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/Quantity">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/Unit_Price">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/Amount">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/Indian_Tax_PER">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_PRICE_DETAILS/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.LineItem" Qualifier="WORKFLOWHISTORY">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="level"/>
+              <PropertyValue Property="Label" String="level"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Title"/>
+              <PropertyValue Property="Label" String="Title"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Employee_ID"/>
+              <PropertyValue Property="Label" String="Employee_ID"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Employee_Name"/>
+              <PropertyValue Property="Label" String="Employee_Name"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Result"/>
+              <PropertyValue Property="Label" String="Result"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Begin_DateAND_Time"/>
+              <PropertyValue Property="Label" String="Begin Date&amp; Time"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="End_DateAND_Time"/>
+              <PropertyValue Property="Label" String="End Date&amp; Time"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Days_Taken"/>
+              <PropertyValue Property="Label" String="Days Taken"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Remarks"/>
+              <PropertyValue Property="Label" String="Remarks"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Approved_by"/>
+              <PropertyValue Property="Label" String="Approved_by"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.LineItem" Qualifier="test">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="level"/>
+              <PropertyValue Property="Label" String="level"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Employee_ID"/>
+              <PropertyValue Property="Label" String="Employee_ID"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/Title">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/Notification_Status">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/Result">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/Begin_DateAND_Time">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/End_DateAND_Time">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/Days_Taken">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/Remarks">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.WORKFLOW_HISTORY/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+        <Annotation Term="UI.LineItem" Qualifier="ATTACHMENTSINTERNALTOPANFORAPPROVERS">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="content"/>
+              <PropertyValue Property="Label" String="FILES"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.FieldGroup" Qualifier="filecontent">
+          <Record Type="UI.FieldGroupType">
+            <PropertyValue Property="Data">
+              <Collection>
+                <Record Type="UI.DataField">
+                  <PropertyValue Property="Value" Path="content"/>
+                  <PropertyValue Property="Label" String="content"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.LineItem" Qualifier="attachments">
+          <Collection>
+            <Record Type="UI.DataFieldForAnnotation">
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#filecontent"/>
+              <PropertyValue Property="Label" String="content"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.EntityContainer/attachments">
+        <Annotation Term="UI.CreateHidden" Bool="true"/>
+        <Annotation Term="UI.DeleteHidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/ID">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/createdAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/createdBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/modifiedAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/modifiedBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/content">
+        <Annotation Term="Core.MediaType" Path="mediaType"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/mediaType">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+        <Annotation Term="Core.IsMediaType" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.attachments/fileName">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Payment_Method_Drop/id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments">
+        <Annotation Term="UI.LineItem" Qualifier="ApprovalComments">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Comments"/>
+              <PropertyValue Property="Label" String="Comments"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/createdAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/createdBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/modifiedAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/modifiedBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/idd">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/Comments">
+        <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/IsActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/HasActiveEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/HasDraftEntity">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.PAN_Comments/DraftAdministrativeData">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData">
+        <Annotation Term="Common.Label" String="{i18n>Draft_DraftAdministrativeData}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/DraftUUID">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>Draft_DraftUUID}"/>
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/CreationDateTime">
+        <Annotation Term="Common.Label" String="{i18n>Draft_CreationDateTime}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/CreatedByUser">
+        <Annotation Term="Common.Label" String="{i18n>Draft_CreatedByUser}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/DraftIsCreatedByMe">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsCreatedByMe}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/LastChangeDateTime">
+        <Annotation Term="Common.Label" String="{i18n>Draft_LastChangeDateTime}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/LastChangedByUser">
+        <Annotation Term="Common.Label" String="{i18n>Draft_LastChangedByUser}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/InProcessByUser">
+        <Annotation Term="Common.Label" String="{i18n>Draft_InProcessByUser}"/>
+      </Annotations>
+      <Annotations Target="CatalogService.DraftAdministrativeData/DraftIsProcessedByMe">
+        <Annotation Term="UI.Hidden" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsProcessedByMe}"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

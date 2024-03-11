@@ -1,0 +1,12 @@
+VIEW PanApproval_PAN_TYPE_APR AS SELECT
+  PAN_TYPE_0.idd,
+  PAN_TYPE_0.PAN_Number,
+  PAN_TYPE_0.typeNo,
+  PAN_TYPE_0.required,
+  PAN_TYPE_0.submittedOn,
+  PAN_TYPE_0.receivedOn,
+  PAN_TYPE_0.timeTakenForApproval
+FROM proj_schema_PAN_TYPE AS PAN_TYPE_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN PanApproval_PAN_Details_APR AS tab3totab1 ON (tab3totab1.PAN_Number = PAN_Number)
+)

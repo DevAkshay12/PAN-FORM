@@ -1,0 +1,18 @@
+VIEW CatalogService_PAN_PRICE_DETAILS AS SELECT
+  PAN_PRICE_DETAILS_0.pdkey,
+  PAN_PRICE_DETAILS_0.Proposed_Vendor_Code,
+  PAN_PRICE_DETAILS_0.PAN_Number,
+  PAN_PRICE_DETAILS_0.Item_Code,
+  PAN_PRICE_DETAILS_0.HSN_OR_SAC_Code,
+  PAN_PRICE_DETAILS_0.extendedPrice,
+  PAN_PRICE_DETAILS_0.Item_Short_Description,
+  PAN_PRICE_DETAILS_0.UOM,
+  PAN_PRICE_DETAILS_0.Quantity,
+  PAN_PRICE_DETAILS_0.Unit_Price,
+  PAN_PRICE_DETAILS_0.Amount,
+  PAN_PRICE_DETAILS_0.Indian_Tax_PER,
+  PAN_PRICE_DETAILS_0.Quantity_Over_Delivery_Tolerance
+FROM proj_schema_PAN_PRICE_DETAILS AS PAN_PRICE_DETAILS_0
+WITH ASSOCIATIONS (
+  MANY TO ONE JOIN CatalogService_vendor_data AS pdtovend ON (pdtovend.Proposed_Vendor_Code = Proposed_Vendor_Code AND PAN_Number = pdtovend.PAN_Number)
+)

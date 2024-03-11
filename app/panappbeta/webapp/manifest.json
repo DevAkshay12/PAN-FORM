@@ -1,0 +1,380 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "panappbeta",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.12.2",
+      "toolsId": "afcf0480-c72e-42d1-94be-a901d1b63b36"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "obj1-display": {
+          "semanticObject": "obj1",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      },
+      "outbounds": {
+        "obj1-display": {
+          "semanticObject": "obj1",
+          "action": "display",
+          "parameters": {}
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+"sap.platform.cf": {
+    "ui5VersionNumber": "1.120.4"
+},
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.4",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties",
+        "settings": {
+          "bundleName": "panappbeta.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "tab1List",
+          "target": "tab1List"
+        },
+        {
+          "pattern": "tab1({key}):?query:",
+          "name": "tab1ObjectPage",
+          "target": "tab1ObjectPage"
+        },
+        {
+          "pattern": "tab1({key})/tab1tovendor_data({key2}):?query:",
+          "name": "tab1_tab1tovendor_dataObjectPage",
+          "target": "tab1_tab1tovendor_dataObjectPage"
+        }
+      ],
+      "targets": {
+        "tab1List": {
+          "type": "Component",
+          "id": "tab1List",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/tab1",
+              "variantManagement": "None",
+              "navigation": {
+                "tab1": {
+                  "detail": {
+                    "route": "tab1ObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": false
+                  },
+                  "columns": {
+                    "DataField::SBG": {
+                      "width": "300px"
+                    },
+                    "DataField::SBU": {
+                      "width": "300px"
+                    },
+                    "DataField::PAN_Number": {
+                      "width": "150px"
+                    },
+                    "DataField::Plant_Code": {
+                      "width": "100px"
+                    },
+                    "DataField::status": {
+                      "width": "150px"
+                    }
+                  }
+                }
+              },
+              "hideFilterBar": false,
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "tab1ObjectPage": {
+          "type": "Component",
+          "id": "tab1ObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "navToListOnSave": true,
+              "contextPath": "/tab1",
+              "controlConfiguration": {
+                "tab1tovendor_data/@com.sap.vocabularies.UI.v1.LineItem#VendorData": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": false
+                  }
+                },
+                "tab1topdf/@com.sap.vocabularies.UI.v1.LineItem#ATTACHMENTSINTERNALTOPANFORAPPROVERS": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "enableExport": false,
+                    "selectionMode": "Single",
+                    "selectAll": true
+                  },
+                  "actions": {
+                    "attach": {
+                      "press": "panappbeta.ext.controller.Draftattachment.upload",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "attach"
+                    }
+                  },
+                  "columns": {
+                    "DataFieldForAnnotation::FieldGroup::filecontent": {
+                      "width": "200px"
+                    }
+                  }
+                },
+                "tab1toWORKFLOW_HISTORY/@com.sap.vocabularies.UI.v1.LineItem#WORKFLOWHISTORY": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": false
+                  },
+                  "actions": {
+                    "refrestWF": {
+                      "press": "panappbeta.ext.controller.RefreshWF.refresh",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Refresh"
+                    }
+                  }
+                },
+                "tab1totab2/@com.sap.vocabularies.UI.v1.LineItem#_": {
+                  "tableSettings": {
+                    "enableExport": false,
+                    "type": "GridTable",
+                    "selectAll": false
+                  },
+                  "columns": {
+                    "DataField::date": {
+                      "width": "150px"
+                    },
+                    "DataField::eventNo": {
+                      "width": "250px"
+                    },
+                    "DataField::number": {
+                      "width": "250px"
+                    },
+                    "DataField::l1AmountObtained": {
+                      "width": "200px"
+                    },
+                    "DataField::numberOfVendorsParticipated": {
+                      "width": "250px"
+                    }
+                  }
+                },
+                "tab1totab3/@com.sap.vocabularies.UI.v1.LineItem#TYPE": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "selectAll": false
+                  },
+                  "columns": {
+                    "DataField::typeNo": {
+                      "width": "200px"
+                    },
+                    "DataField::required": {
+                      "width": "200px"
+                    },
+                    "DataField::submittedOn": {
+                      "width": "200px"
+                    },
+                    "DataField::receivedOn": {
+                      "width": "200px"
+                    },
+                    "DataField::timeTakenForApproval": {
+                      "width": "200px"
+                    }
+                  }
+                },
+                "tab1tocom/@com.sap.vocabularies.UI.v1.LineItem#ApprovalComments": {
+                  "actions": {
+                    "approval_history": {
+                      "press": "panappbeta.ext.controller.Demo.demo",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Approval History"
+                    }
+                  }
+                }
+              },
+              "navigation": {
+                "tab1tovendor_data": {
+                  "detail": {
+                    "allowDeepLinking": true,
+                    "route": "tab1_tab1tovendor_dataObjectPage"
+                  }
+                }
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "WorkFlow": {
+                      "template": "panappbeta.ext.fragment.WorkFlow",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Justification"
+                      },
+                      "title": "WorkFlow History",
+                      "type": "XMLFragment"
+                    },
+                    "Attachment": {
+                      "template": "panappbeta.ext.fragment.Attachment",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "VendorData"
+                      },
+                      "title": "Attachments",
+                      "type": "XMLFragment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tab1_tab1tovendor_dataObjectPage": {
+          "type": "Component",
+          "id": "tab1_tab1tovendor_dataObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/tab1/tab1tovendor_data",
+              "navigation": {},
+              "controlConfiguration": {
+                "vendtoptd/@com.sap.vocabularies.UI.v1.LineItem#PAYMENT_TERM_DETAILS": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "enableExport": false,
+                    "hideFilterBar": true,
+                    "creationMode": {
+                      "inlineCreationRowsHiddenInEditMode": true
+                    }
+                  }
+                },
+                "vendtopd/@com.sap.vocabularies.UI.v1.LineItem#PAN_PRICE_DETAILS": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "hideFilterBar": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ListReport.ListReportController#panappbeta::tab1List": {
+            "controllerName": "panappbeta.ext.controller.Tab1"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController#panappbeta::tab1ObjectPage": {
+            "controllerName": "panappbeta.ext.controller.Form"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController#panappbeta::tab1_tab1tovendor_dataObjectPage": {
+            "controllerName": "panappbeta.ext.controller.Vendor"
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "form"
+  }
+}

@@ -1,0 +1,18 @@
+COLUMN TABLE proj_schema_PAN_WORKFLOW_HISTORY (
+  idd NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  Employee_ID NVARCHAR(5000),
+  level NVARCHAR(5000),
+  Approved_by NVARCHAR(5000),
+  Employee_Name NVARCHAR(5000),
+  Title NVARCHAR(5000),
+  Notification_Status NVARCHAR(5000),
+  Result NVARCHAR(5000),
+  Begin_DateAND_Time NVARCHAR(5000),
+  End_DateAND_Time NVARCHAR(5000),
+  Days_Taken NVARCHAR(5000),
+  Remarks NVARCHAR(5000),
+  PRIMARY KEY(idd, PAN_Number)
+) WITH ASSOCIATIONS (
+  MANY TO ONE JOIN proj_schema_PAN_Details AS WORKFLOW_HISTORYtotab1 ON (WORKFLOW_HISTORYtotab1.PAN_Number = PAN_Number)
+)

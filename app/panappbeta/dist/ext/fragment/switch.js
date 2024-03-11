@@ -1,0 +1,1 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{onPress:function(s){e.show("Remainder Email will be Sent.")}}});

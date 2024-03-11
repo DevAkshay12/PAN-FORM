@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="PanApproval" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="PAN_Details_APR" EntityType="PanApproval.PAN_Details_APR">
+          <NavigationPropertyBinding Path="tab1totab2/tab2totab1" Target="PAN_Details_APR"/>
+          <NavigationPropertyBinding Path="tab1totab3/tab3totab1" Target="PAN_Details_APR"/>
+          <NavigationPropertyBinding Path="tab1toWORKFLOW_HISTORY/WORKFLOW_HISTORYtotab1" Target="PAN_Details_APR"/>
+          <NavigationPropertyBinding Path="tab1topdf" Target="PAN_attachments_APR"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtovenr/venrtovend" Target="PAN_Details_APR/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtoptd/ptdtovend" Target="PAN_Details_APR/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendtopd/pdtovend" Target="PAN_Details_APR/tab1tovendor_data"/>
+          <NavigationPropertyBinding Path="tab1tovendor_data/vendor_datatotab1" Target="PAN_Details_APR"/>
+          <NavigationPropertyBinding Path="tab1tocom/comtotab1" Target="PAN_Details_APR"/>
+        </EntitySet>
+        <EntitySet Name="PAN_attachments_APR" EntityType="PanApproval.PAN_attachments_APR">
+          <NavigationPropertyBinding Path="pdftotab1" Target="PAN_Details_APR"/>
+        </EntitySet>
+        <EntitySet Name="PAN_Payment_Method_Drop_APR" EntityType="PanApproval.PAN_Payment_Method_Drop_APR"/>
+        <EntitySet Name="vendorTaxDetails_APR" EntityType="PanApproval.vendorTaxDetails_APR"/>
+        <FunctionImport Name="sendforapproval" Function="PanApproval.sendforapproval"/>
+        <FunctionImport Name="InsertData" Function="PanApproval.InsertData"/>
+        <FunctionImport Name="finalApprove" Function="PanApproval.finalApprove"/>
+        <FunctionImport Name="getData" Function="PanApproval.getData"/>
+        <FunctionImport Name="switch_control" Function="PanApproval.switch_control"/>
+        <FunctionImport Name="getuser" Function="PanApproval.getuser"/>
+        <FunctionImport Name="Reject" Function="PanApproval.Reject"/>
+        <FunctionImport Name="getcomments" Function="PanApproval.getcomments"/>
+      </EntityContainer>
+      <EntityType Name="PAN_Details_APR">
+        <Key>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false" DefaultValue="def"/>
+        <Property Name="SBG" Type="Edm.String"/>
+        <Property Name="SBU" Type="Edm.String"/>
+        <Property Name="BUORPurchasing_Group" Type="Edm.String"/>
+        <Property Name="Plant_Code" Type="Edm.String"/>
+        <Property Name="Project_Description" Type="Edm.String"/>
+        <Property Name="PR_NumberBKTsBKT" Type="Edm.String"/>
+        <Property Name="Subject_of_ProposalOROrder" Type="Edm.String"/>
+        <Property Name="Previous_PAN_References" Type="Edm.String"/>
+        <Property Name="Split_OrderORNo_of_vendors" Type="Edm.String"/>
+        <Property Name="SOP_Type" Type="Edm.String"/>
+        <Property Name="Order_Type_OR_Document_tyFuuidpe" Type="Edm.String"/>
+        <Property Name="Asset_Type" Type="Edm.String"/>
+        <Property Name="Nature_of_Transaction" Type="Edm.String"/>
+        <Property Name="Order_Location_OR_Plant" Type="Edm.String"/>
+        <Property Name="Base_line_spend" Type="Edm.String"/>
+        <Property Name="Project_CurrencyORBase_Currency" Type="Edm.String"/>
+        <Property Name="Order_CurrencyORBid_currency" Type="Edm.String"/>
+        <Property Name="Final_proposed_Value" Type="Edm.String"/>
+        <Property Name="Savings_achieved_btw_initial_and_final_quote" Type="Edm.String"/>
+        <Property Name="Savings_against_base_line_spend_of_RFP" Type="Edm.String"/>
+        <Property Name="Number_of_Vendors_Shortlisted_for_RFP" Type="Edm.String"/>
+        <Property Name="Number_of_Vendors_Technically_Qualified" Type="Edm.String"/>
+        <Property Name="Required_at_Site_Date" Type="Edm.String"/>
+        <Property Name="RFP_Number" Type="Edm.String"/>
+        <Property Name="RFP_Publish_Date" Type="Edm.String"/>
+        <Property Name="Time_Taken_for_FinalizationDASHIn_DAYS" Type="Edm.String"/>
+        <Property Name="status" Type="Edm.String"/>
+        <Property Name="statusInd" Type="Edm.Int32"/>
+        <Property Name="created_by" Type="Edm.String"/>
+        <Property Name="task_id" Type="Edm.String"/>
+        <Property Name="type" Type="Edm.String"/>
+        <Property Name="status_a" Type="Edm.String"/>
+        <Property Name="switch_control" Type="Edm.Boolean" DefaultValue="false"/>
+        <Property Name="ProjectId" Type="Edm.String"/>
+        <Property Name="number_of_vendors_invited" Type="Edm.String"/>
+        <Property Name="total_levels_of_approval" Type="Edm.String" MaxLength="2"/>
+        <Property Name="Current_level_of_approval" Type="Edm.String" MaxLength="2"/>
+        <Property Name="Sap_workitem_id" Type="Edm.String"/>
+        <Property Name="Comments" Type="Edm.String"/>
+        <Property Name="submitted_by" Type="Edm.String"/>
+        <Property Name="submitted_date" Type="Edm.String"/>
+        <NavigationProperty Name="tab1totab2" Type="Collection(PanApproval.PAN_WEB_EVENT_APR)" Partner="tab2totab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1totab3" Type="Collection(PanApproval.PAN_TYPE_APR)" Partner="tab3totab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1toWORKFLOW_HISTORY" Type="Collection(PanApproval.PAN_WORKFLOW_HISTORY_APR)" Partner="WORKFLOW_HISTORYtotab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1topdf" Type="Collection(PanApproval.PAN_attachments_APR)"/>
+        <NavigationProperty Name="tab1tovendor_data" Type="Collection(PanApproval.PAN_vendor_data_APR)" Partner="vendor_datatotab1" ContainsTarget="true"/>
+        <NavigationProperty Name="tab1tocom" Type="Collection(PanApproval.PAN_Comments_APR)" Partner="comtotab1" ContainsTarget="true"/>
+      </EntityType>
+      <EntityType Name="PAN_WEB_EVENT_APR">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="idd" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="eventNo" Type="Edm.String"/>
+        <Property Name="number" Type="Edm.String"/>
+        <Property Name="date" Type="Edm.String"/>
+        <Property Name="numberOfVendorsParticipated" Type="Edm.String"/>
+        <Property Name="l1AmountObtained" Type="Edm.String"/>
+        <NavigationProperty Name="tab2totab1" Type="PanApproval.PAN_Details_APR" Partner="tab1totab2"/>
+      </EntityType>
+      <EntityType Name="PAN_TYPE_APR">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="idd" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="typeNo" Type="Edm.String"/>
+        <Property Name="required" Type="Edm.String"/>
+        <Property Name="submittedOn" Type="Edm.String"/>
+        <Property Name="receivedOn" Type="Edm.String"/>
+        <Property Name="timeTakenForApproval" Type="Edm.String"/>
+        <NavigationProperty Name="tab3totab1" Type="PanApproval.PAN_Details_APR" Partner="tab1totab3"/>
+      </EntityType>
+      <EntityType Name="PAN_vendor_data_APR">
+        <Key>
+          <PropertyRef Name="Proposed_Vendor_Code"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Awarded_Vendor" Type="Edm.String"/>
+        <Property Name="Vendor_Name" Type="Edm.String"/>
+        <Property Name="Vendor_Location" Type="Edm.String"/>
+        <Property Name="Technically_Approved" Type="Edm.String"/>
+        <Property Name="Client_Approved" Type="Edm.String"/>
+        <Property Name="Original_quote" Type="Edm.String"/>
+        <Property Name="Final_Quote" Type="Edm.String"/>
+        <Property Name="Order_amount_OR_Split_order_amount" Type="Edm.String"/>
+        <Property Name="Discount_Amount" Type="Edm.String"/>
+        <Property Name="Discount_percentage" Type="Edm.String"/>
+        <Property Name="Rank" Type="Edm.String"/>
+        <Property Name="Proposed_Vendor_Name" Type="Edm.String"/>
+        <Property Name="Supplier_Origin_State" Type="Edm.String"/>
+        <Property Name="Destination_State_BKTShipDASHto_LocationBKT" Type="Edm.String"/>
+        <Property Name="Vendor_GST_Number" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH1" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH2" Type="Edm.String"/>
+        <Property Name="Technical_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Commercial_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Vendor_References_to_be_displayed_in_Order" Type="Edm.String"/>
+        <Property Name="Shortlisted_Vendors_Response_summary" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Project_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Bid_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Amount" Type="Edm.String"/>
+        <Property Name="Project_CurrencyORBase_Currency" Type="Edm.String"/>
+        <Property Name="Order_CurrencyORBid_currency" Type="Edm.String"/>
+        <Property Name="Incoterms" Type="Edm.String"/>
+        <Property Name="Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC" Type="Edm.String"/>
+        <Property Name="Details_of_deviated_or_better_terms_agreed_with_the_Vendor" Type="Edm.String"/>
+        <Property Name="Market_Scenario_and_Demand" Type="Edm.String"/>
+        <Property Name="Companys_Position_and_Market_dynamics_of_this_purchase" Type="Edm.String"/>
+        <Property Name="Should_Be_Cost_estimated" Type="Edm.String"/>
+        <Property Name="Highlights_of_this_proposal_and_Price_Justification_for_this_proposal" Type="Edm.String"/>
+        <Property Name="Price_Escalation_Agreed_if_any" Type="Edm.String"/>
+        <Property Name="Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor" Type="Edm.String"/>
+        <Property Name="Transportation" Type="Edm.String"/>
+        <Property Name="Logistics_Cost" Type="Edm.String"/>
+        <Property Name="Delivery_Schedule" Type="Edm.String"/>
+        <Property Name="Tax_Details" Type="Edm.String"/>
+        <Property Name="Additional_Remarks" Type="Edm.String"/>
+        <Property Name="ABG" Type="Edm.String"/>
+        <Property Name="ABG_Value" Type="Edm.String"/>
+        <Property Name="CPBG" Type="Edm.String"/>
+        <Property Name="CPBG_Value" Type="Edm.String"/>
+        <Property Name="Scope_and_Responsibilities" Type="Edm.String"/>
+        <Property Name="Commercial_Terms" Type="Edm.String"/>
+        <Property Name="Compliance_Terms" Type="Edm.String"/>
+        <Property Name="Others" Type="Edm.String"/>
+        <NavigationProperty Name="vendtovenr" Type="Collection(PanApproval.PAN_vendor_response_APR)" Partner="venrtovend" ContainsTarget="true"/>
+        <NavigationProperty Name="vendtoptd" Type="Collection(PanApproval.PAN_PAYMENT_TERM_DETAILS_APR)" Partner="ptdtovend" ContainsTarget="true"/>
+        <NavigationProperty Name="vendtopd" Type="Collection(PanApproval.PAN_PRICE_DETAILS_APR)" Partner="pdtovend" ContainsTarget="true"/>
+        <NavigationProperty Name="vendor_datatotab1" Type="PanApproval.PAN_Details_APR" Partner="tab1tovendor_data"/>
+      </EntityType>
+      <EntityType Name="PAN_vendor_response_APR">
+        <Key>
+          <PropertyRef Name="Proposed_Vendor_Code"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Proposed_Vendor_Name" Type="Edm.String"/>
+        <Property Name="Supplier_Origin_State" Type="Edm.String"/>
+        <Property Name="Destination_State_BKTShipDASHto_LocationBKT" Type="Edm.String"/>
+        <Property Name="Vendor_GST_Number" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_CE_Date" Type="Edm.Date"/>
+        <Property Name="Vendor_PE_Score" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH1" Type="Edm.String"/>
+        <Property Name="Vendor_Contact_PersonDASH2" Type="Edm.String"/>
+        <Property Name="Technical_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Commercial_Committee_who_cleared_the_proposal" Type="Edm.String"/>
+        <Property Name="Vendor_References_to_be_displayed_in_Order" Type="Edm.String"/>
+        <Property Name="Shortlisted_Vendors_Response_summary" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Project_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Order_Value_BKTIn_Bid_CurrencyBKT" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Date" Type="Edm.String"/>
+        <Property Name="Vendor_Final_Quotation_Amount" Type="Edm.String"/>
+        <Property Name="Project_CurrencyORBase_Currency" Type="Edm.String"/>
+        <Property Name="Order_CurrencyORBid_currency" Type="Edm.String"/>
+        <Property Name="Incoterms" Type="Edm.String"/>
+        <Property Name="Number_of_Back_to_back_Terms_agreed_with_Vendor_as_per_GPC_OR_GCC" Type="Edm.String"/>
+        <Property Name="Details_of_deviated_or_better_terms_agreed_with_the_Vendor" Type="Edm.String"/>
+        <Property Name="Market_Scenario_and_Demand" Type="Edm.String"/>
+        <Property Name="Companys_Position_and_Market_dynamics_of_this_purchase" Type="Edm.String"/>
+        <Property Name="Should_Be_Cost_estimated" Type="Edm.String"/>
+        <Property Name="Highlights_of_this_proposal_and_Price_Justification_for_this_proposal" Type="Edm.String"/>
+        <Property Name="Price_Escalation_Agreed_if_any" Type="Edm.String"/>
+        <Property Name="Particulars_of_any_Free_Service_OR_Supply_Guarantees_OR_Warrant_yfrom_Vendor" Type="Edm.String"/>
+        <Property Name="Transportation" Type="Edm.String"/>
+        <Property Name="Logistics_Cost" Type="Edm.String"/>
+        <Property Name="Delivery_Schedule" Type="Edm.String"/>
+        <Property Name="Tax_Details" Type="Edm.String"/>
+        <Property Name="Additional_Remarks" Type="Edm.String"/>
+        <Property Name="ABG" Type="Edm.String"/>
+        <Property Name="ABG_Value" Type="Edm.String"/>
+        <Property Name="CPBG" Type="Edm.String"/>
+        <Property Name="CPBG_Value" Type="Edm.String"/>
+        <Property Name="Scope_and_Responsibilities" Type="Edm.String"/>
+        <Property Name="Commercial_Terms" Type="Edm.String"/>
+        <Property Name="Compliance_Terms" Type="Edm.String"/>
+        <Property Name="Others" Type="Edm.String"/>
+        <NavigationProperty Name="venrtovend" Type="PanApproval.PAN_vendor_data_APR" Partner="vendtovenr"/>
+      </EntityType>
+      <EntityType Name="PAN_PAYMENT_TERM_DETAILS_APR">
+        <Key>
+          <PropertyRef Name="ptdkey"/>
+        </Key>
+        <Property Name="ptdkey" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String"/>
+        <Property Name="PAN_Number" Type="Edm.String"/>
+        <Property Name="iddd" Type="Edm.String"/>
+        <Property Name="slNo" Type="Edm.Int32"/>
+        <Property Name="Payment_methord" Type="Edm.String" DefaultValue="RTGS payment"/>
+        <Property Name="Percentage" Type="Edm.String"/>
+        <Property Name="Description" Type="Edm.String"/>
+        <Property Name="Due_date" Type="Edm.String"/>
+        <Property Name="Mandatory_Documents_OR_Submissions" Type="Edm.String"/>
+        <Property Name="To_be_certified_in_Company" Type="Edm.String"/>
+        <NavigationProperty Name="ptdtovend" Type="PanApproval.PAN_vendor_data_APR" Partner="vendtoptd"/>
+      </EntityType>
+      <EntityType Name="PAN_PRICE_DETAILS_APR">
+        <Key>
+          <PropertyRef Name="pdkey"/>
+        </Key>
+        <Property Name="pdkey" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String"/>
+        <Property Name="PAN_Number" Type="Edm.String"/>
+        <Property Name="Item_Code" Type="Edm.String"/>
+        <Property Name="HSN_OR_SAC_Code" Type="Edm.String"/>
+        <Property Name="extendedPrice" Type="Edm.String"/>
+        <Property Name="Item_Short_Description" Type="Edm.String"/>
+        <Property Name="UOM" Type="Edm.String"/>
+        <Property Name="Quantity" Type="Edm.String"/>
+        <Property Name="Unit_Price" Type="Edm.String"/>
+        <Property Name="Amount" Type="Edm.String"/>
+        <Property Name="Indian_Tax_PER" Type="Edm.String"/>
+        <Property Name="Quantity_Over_Delivery_Tolerance" Type="Edm.String"/>
+        <NavigationProperty Name="pdtovend" Type="PanApproval.PAN_vendor_data_APR" Partner="vendtopd"/>
+      </EntityType>
+      <EntityType Name="PAN_WORKFLOW_HISTORY_APR">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="idd" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Employee_ID" Type="Edm.String"/>
+        <Property Name="level" Type="Edm.String"/>
+        <Property Name="Approved_by" Type="Edm.String"/>
+        <Property Name="Employee_Name" Type="Edm.String"/>
+        <Property Name="Title" Type="Edm.String"/>
+        <Property Name="Notification_Status" Type="Edm.String"/>
+        <Property Name="Result" Type="Edm.String"/>
+        <Property Name="Begin_DateAND_Time" Type="Edm.String"/>
+        <Property Name="End_DateAND_Time" Type="Edm.String"/>
+        <Property Name="Days_Taken" Type="Edm.String"/>
+        <Property Name="Remarks" Type="Edm.String"/>
+        <NavigationProperty Name="WORKFLOW_HISTORYtotab1" Type="PanApproval.PAN_Details_APR" Partner="tab1toWORKFLOW_HISTORY"/>
+      </EntityType>
+      <EntityType Name="PAN_attachments_APR">
+        <Key>
+          <PropertyRef Name="ID"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="content" Type="Edm.Stream"/>
+        <Property Name="mediaType" Type="Edm.String"/>
+        <Property Name="fileName" Type="Edm.String"/>
+        <Property Name="size" Type="Edm.Int32"/>
+        <Property Name="url" Type="Edm.String"/>
+        <NavigationProperty Name="pdftotab1" Type="PanApproval.PAN_Details_APR">
+          <ReferentialConstraint Property="PAN_Number" ReferencedProperty="PAN_Number"/>
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="PAN_Payment_Method_Drop_APR">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Payment_method" Type="Edm.String"/>
+      </EntityType>
+      <EntityType Name="PAN_Comments_APR">
+        <Key>
+          <PropertyRef Name="idd"/>
+          <PropertyRef Name="PAN_Number"/>
+        </Key>
+        <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+        <Property Name="idd" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="user" Type="Edm.String"/>
+        <Property Name="Comments" Type="Edm.String"/>
+        <Property Name="status" Type="Edm.String"/>
+        <NavigationProperty Name="comtotab1" Type="PanApproval.PAN_Details_APR" Partner="tab1tocom"/>
+      </EntityType>
+      <EntityType Name="vendorTaxDetails_APR">
+        <Key>
+          <PropertyRef Name="Proposed_Vendor_Code"/>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="Item_Code"/>
+          <PropertyRef Name="idd"/>
+        </Key>
+        <Property Name="Proposed_Vendor_Code" Type="Edm.String" Nullable="false"/>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="Item_Code" Type="Edm.String" Nullable="false"/>
+        <Property Name="idd" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="name" Type="Edm.String"/>
+        <Property Name="value" Type="Edm.String"/>
+      </EntityType>
+      <Function Name="sendforapproval" IsBound="false" IsComposable="false">
+        <Parameter Name="data" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="InsertData" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="finalApprove" IsBound="false" IsComposable="false">
+        <Parameter Name="data" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getData" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="switch_control" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getuser" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="Reject" IsBound="false" IsComposable="false">
+        <Parameter Name="data" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Function Name="getcomments" IsBound="false" IsComposable="false">
+        <Parameter Name="ID" Type="Edm.String"/>
+        <ReturnType Type="Edm.String"/>
+      </Function>
+      <Annotations Target="PanApproval.PAN_PAYMENT_TERM_DETAILS_APR/ptdkey">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_PRICE_DETAILS_APR/pdkey">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/ID">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/createdAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/createdBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/modifiedAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/modifiedBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/content">
+        <Annotation Term="Core.MediaType" Path="mediaType"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_attachments_APR/mediaType">
+        <Annotation Term="Core.IsMediaType" Bool="true"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_Payment_Method_Drop_APR/id">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_Comments_APR/createdAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_Comments_APR/createdBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Immutable" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_Comments_APR/modifiedAt">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_Comments_APR/modifiedBy">
+        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+        <Annotation Term="Core.Computed" Bool="true"/>
+        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+        <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+      </Annotations>
+      <Annotations Target="PanApproval.PAN_Comments_APR/idd">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+      <Annotations Target="PanApproval.vendorTaxDetails_APR/idd">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,9 @@
+COLUMN TABLE proj_schema_vendorTaxDetails (
+  Proposed_Vendor_Code NVARCHAR(5000) NOT NULL,
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  Item_Code NVARCHAR(5000) NOT NULL,
+  idd NVARCHAR(36) NOT NULL,
+  name NVARCHAR(5000),
+  value NVARCHAR(5000),
+  PRIMARY KEY(Proposed_Vendor_Code, PAN_Number, Item_Code, idd)
+)
