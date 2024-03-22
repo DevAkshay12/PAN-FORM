@@ -1,0 +1,6 @@
+COLUMN TABLE proj_schema_approversKeys (
+  PAN_Number NVARCHAR(5000) NOT NULL,
+  approver NVARCHAR(5000) NOT NULL,
+  keyy NVARCHAR(5000) NOT NULL,
+  PRIMARY KEY(PAN_Number, approver, keyy)
+)

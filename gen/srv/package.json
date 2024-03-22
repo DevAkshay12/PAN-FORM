@@ -41,6 +41,7 @@
   "cds": {
     "requires": {
       "db": "hana",
+      
       "destinations": true,
       "ARIBA_DEV": {
         "kind": "odata-v2",

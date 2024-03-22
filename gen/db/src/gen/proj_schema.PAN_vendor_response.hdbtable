@@ -8,7 +8,7 @@ COLUMN TABLE proj_schema_PAN_vendor_response (
   Vendor_CE_Score NVARCHAR(5000),
   Vendor_CE_Date DATE,
   Vendor_PE_Score NVARCHAR(5000),
-  Vendor_PE_Date NVARCHAR(5000),
+  Vendor_PE_Date DATE,
   Vendor_Contact_PersonDASH1 NVARCHAR(5000),
   Vendor_Contact_PersonDASH2 NVARCHAR(5000),
   Technical_Committee_who_cleared_the_proposal NVARCHAR(5000),

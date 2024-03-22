@@ -193,9 +193,12 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', "sap/m/Dialog", "sap/ui/co
 								dialog.close();
 								dialog.destroy();
 								oBusyDialog.close();
-								if(result.value == "error"){
+								if(result.value == "error" ){
 									window.alert("Sorry.. Please try again after sometime")
-								}else{
+								}else if(result.value == "wfempty"){
+									window.alert("Approvers cannot be Empty!")
+								}
+								else{
 								// dialog.exit();
 								MessageToast.show("PANForm Submitted for Approval");
 								var href_For_Product_display = await sap.ushell.Container.getServiceAsync("Navigation");

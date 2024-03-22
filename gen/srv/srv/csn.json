@@ -659,7 +659,7 @@
           "type": "cds.String"
         },
         "Vendor_PE_Date": {
-          "type": "cds.String"
+          "type": "cds.Date"
         },
         "Vendor_Contact_PersonDASH1": {
           "type": "cds.String"
@@ -1245,6 +1245,24 @@
         }
       }
     },
+    "proj_schema.approversKeys": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "elements": {
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "approver": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "keyy": {
+          "key": true,
+          "type": "cds.String"
+        }
+      }
+    },
     "CatalogService": {
       "@source": "srv/service.cds",
       "kind": "service",
@@ -1261,21 +1279,7 @@
           "Value": {
             "=": "PAN_Number"
           },
-          "Label": "PAN Number"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "SBG"
-          },
-          "Label": "SBG"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "SBU"
-          },
-          "Label": "SBU"
+          "Label": "NFA Number"
         },
         {
           "$Type": "UI.DataField",
@@ -1322,8 +1326,8 @@
       "@UI.SelectionPresentationVariant#tableView1.SelectionVariant.$Type": "UI.SelectionVariantType",
       "@UI.SelectionPresentationVariant#tableView1.SelectionVariant.SelectOptions": [],
       "@UI.SelectionPresentationVariant#tableView1.Text": "Table View 1",
-      "@UI.HeaderInfo.TypeName": "PAN Details",
-      "@UI.HeaderInfo.TypeNamePlural": "PAN Details",
+      "@UI.HeaderInfo.TypeName": "NFA Details",
+      "@UI.HeaderInfo.TypeNamePlural": "NFA Details",
       "@UI.HeaderInfo.Title.$Type": "UI.DataField",
       "@UI.HeaderInfo.Title.Value": {
         "=": "PAN_Number"
@@ -1341,21 +1345,15 @@
             },
             {
               "$Type": "UI.ReferenceFacet",
-              "Label": "WEB EVENT",
+              "Label": "EVENT HISTORY",
               "ID": "_",
               "Target": "tab1totab2/@UI.LineItem#_"
-            },
-            {
-              "$Type": "UI.ReferenceFacet",
-              "Label": "TYPE",
-              "ID": "TYPE",
-              "Target": "tab1totab3/@UI.LineItem#TYPE"
             }
           ]
         },
         {
           "$Type": "UI.ReferenceFacet",
-          "Label": "Vendor Details",
+          "Label": "Vendor Response Details",
           "ID": "VendorData",
           "Target": "tab1tovendor_data/@UI.LineItem#VendorData"
         },
@@ -1373,21 +1371,7 @@
           "Value": {
             "=": "PAN_Number"
           },
-          "Label": "PAN Number"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "SBG"
-          },
-          "Label": "SBG"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "SBU"
-          },
-          "Label": "SBU"
+          "Label": "NFA Number"
         },
         {
           "$Type": "UI.DataField",
@@ -1423,13 +1407,6 @@
             "=": "Subject_of_ProposalOROrder"
           },
           "Label": "Subject of Proposal/Order"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Previous_PAN_References"
-          },
-          "Label": "Previous PAN References"
         },
         {
           "$Type": "UI.DataField",
@@ -1493,20 +1470,6 @@
             "=": "Number_of_Vendors_Shortlisted_for_RFP"
           },
           "Label": "Number of Vendors Shortlisted for RFP"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Number_of_Vendors_Technically_Qualified"
-          },
-          "Label": "Number of Vendors Technically Qualified"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Required_at_Site_Date"
-          },
-          "Label": "Required at Site Date"
         },
         {
           "$Type": "UI.DataField",
@@ -2185,13 +2148,6 @@
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "Technically_Approved"
-          },
-          "Label": "Technically Approved"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
             "=": "Order_amount_OR_Split_order_amount"
           },
           "Label": "Order amount OR Split order amount"
@@ -2237,25 +2193,19 @@
         },
         {
           "$Type": "UI.ReferenceFacet",
-          "Label": "Terms and Conditions Compared with",
-          "ID": "TermsandConditionsComparedwith",
-          "Target": "@UI.FieldGroup#TermsandConditionsComparedwith"
-        },
-        {
-          "$Type": "UI.ReferenceFacet",
           "Label": "Payment Term Details",
           "ID": "PAYMENT_TERM_DETAILS",
           "Target": "vendtoptd/@UI.LineItem#PAYMENT_TERM_DETAILS"
         },
         {
           "$Type": "UI.ReferenceFacet",
-          "Label": "Others Terms And Conditions",
+          "Label": "Terms And Conditions",
           "ID": "OTHERSTERMSANDCONDITIONS",
           "Target": "@UI.FieldGroup#OTHERSTERMSANDCONDITIONS"
         },
         {
           "$Type": "UI.ReferenceFacet",
-          "Label": "Price Details",
+          "Label": "Item Details",
           "ID": "PRICEDETAILS",
           "Target": "vendtopd/@UI.LineItem#PAN_PRICE_DETAILS"
         }
@@ -2293,34 +2243,6 @@
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "Vendor_CE_Score"
-          },
-          "Label": "Vendor CE Score"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Vendor_CE_Date"
-          },
-          "Label": "Vendor CE Date"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Vendor_PE_Score"
-          },
-          "Label": "Vendor PE Score"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Vendor_PE_Date"
-          },
-          "Label": "Vendor PE Date"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
             "=": "Vendor_Contact_PersonDASH1"
           },
           "Label": "Vendor Contact Person 1"
@@ -2345,13 +2267,6 @@
             "=": "Commercial_Committee_who_cleared_the_proposal"
           },
           "Label": "Commercial Committee who cleared the proposal"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Vendor_References_to_be_displayed_in_Order"
-          },
-          "Label": "Vendor References to be displayed in Order"
         },
         {
           "$Type": "UI.DataField",
@@ -2605,9 +2520,6 @@
           "type": "cds.String"
         },
         "Technically_Approved": {
-          "@Common.FieldControl": {
-            "#": "Mandatory"
-          },
           "type": "cds.String"
         },
         "Client_Approved": {
@@ -2671,9 +2583,6 @@
           "type": "cds.String"
         },
         "Vendor_CE_Score": {
-          "@Common.FieldControl": {
-            "#": "Mandatory"
-          },
           "type": "cds.String"
         },
         "Vendor_CE_Date": {
@@ -2764,9 +2673,6 @@
           "type": "cds.String"
         },
         "Delivery_Schedule": {
-          "@Common.FieldControl": {
-            "#": "Mandatory"
-          },
           "type": "cds.String"
         },
         "Tax_Details": {
@@ -2948,7 +2854,7 @@
           "type": "cds.String"
         },
         "Vendor_PE_Date": {
-          "type": "cds.String"
+          "type": "cds.Date"
         },
         "Vendor_Contact_PersonDASH1": {
           "type": "cds.String"
@@ -3317,14 +3223,7 @@
           "Value": {
             "=": "Indian_Tax_PER"
           },
-          "Label": "Indian Tax %"
-        },
-        {
-          "$Type": "UI.DataField",
-          "Value": {
-            "=": "Quantity_Over_Delivery_Tolerance"
-          },
-          "Label": "Quantity Over Delivery tolerance"
+          "Label": "Tax %"
         }
       ],
       "@cds.persistance.exists": true,
@@ -4713,7 +4612,7 @@
           "type": "cds.String"
         },
         "Vendor_PE_Date": {
-          "type": "cds.String"
+          "type": "cds.Date"
         },
         "Vendor_Contact_PersonDASH1": {
           "type": "cds.String"
@@ -5337,6 +5236,31 @@
           "type": "cds.String"
         },
         "value": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "PanApproval.approversKeys": {
+      "kind": "entity",
+      "@cds.persistance.exists": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "proj_schema.approversKeys"
+          ]
+        }
+      },
+      "elements": {
+        "PAN_Number": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "approver": {
+          "key": true,
+          "type": "cds.String"
+        },
+        "keyy": {
+          "key": true,
           "type": "cds.String"
         }
       }

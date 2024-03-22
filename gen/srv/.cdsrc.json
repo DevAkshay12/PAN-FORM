@@ -9,6 +9,13 @@
           "credentials": {
             "url": "https://tata-projects-limited-tpl-ariba-uat-dzu885iy-tpl-aruat-48c5f432.cfapps.eu10-004.hana.ondemand.com"
           }
+        },
+        "iflow2": {
+          "kind": "rest",
+          "timeout":"",
+          "credentials": {
+            "url": "https://7c17a314trial-dev-main-db2-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/pan-approval"
+          }
         }
     } 
     

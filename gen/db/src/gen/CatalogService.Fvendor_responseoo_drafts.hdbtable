@@ -8,7 +8,7 @@ COLUMN TABLE CatalogService_Fvendor_responseoo_drafts (
   Vendor_CE_Score NVARCHAR(5000) NULL,
   Vendor_CE_Date DATE NULL,
   Vendor_PE_Score NVARCHAR(5000) NULL,
-  Vendor_PE_Date NVARCHAR(5000) NULL,
+  Vendor_PE_Date DATE NULL,
   Vendor_Contact_PersonDASH1 NVARCHAR(5000) NULL,
   Vendor_Contact_PersonDASH2 NVARCHAR(5000) NULL,
   Technical_Committee_who_cleared_the_proposal NVARCHAR(5000) NULL,

@@ -83,11 +83,7 @@ width: 300%;
 #__layout4{
     display: none;
 }
-.sapUiFormCLElement{
-    background-color: aliceblue;
-    margin-bottom: 1%;
-    border-radius: 10px;
-}
+
 /* hiding the setting and filterbar in wf */
 #panappbeta\:\:tab1_tab1tovendor_dataObjectPage--fe\:\:table\:\:vendtopd\:\:LineItem\:\:PAN_PRICE_DETAILS-toolbar,
 #panappbeta\:\:tab1ObjectPage--fe\:\:table\:\:tab1toWORKFLOW_HISTORY\:\:LineItem\:\:WORKFLOWHISTORY\:\:StandardAction\:\:BasicSearch,
@@ -167,9 +163,9 @@ width: 300%;
   #panappbeta\:\:tab1ObjectPage--fe\:\:FormContainer\:\:Justification\:\:FormElement\:\:DataField\:\:justification\:\:Field-edit{
     height: 150px;
     }
-    .sapUiTableHeaderDataCell.sapUiTableHeaderCellActive{
+    /* .sapUiTableHeaderDataCell.sapUiTableHeaderCellActive{
         background-color: gainsboro;
-    }
+    } */
 
 #panappbeta\:\:tab1ObjectPage--fe\:\:CustomSubSection\:\:Attachment--uploadSet-list{
     height: 270px !important;

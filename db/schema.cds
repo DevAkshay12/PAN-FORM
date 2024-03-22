@@ -398,5 +398,11 @@ entity vendorTaxDetails{
   name :String;
   value :String;
 }
+@cds.persistance.exists
+entity approversKeys{
+  key PAN_Number:String;
+  key approver :String;
+  key keyy :String;
+}
 
 

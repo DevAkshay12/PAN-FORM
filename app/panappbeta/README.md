@@ -9,7 +9,7 @@
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/odata/v4/catalog/
 |**Module Name**<br>panappbeta|
-|**Application Title**<br>PAN Form|
+|**Application Title**<br>NFA Form|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.120.4|

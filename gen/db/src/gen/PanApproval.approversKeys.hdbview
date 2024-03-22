@@ -1,0 +1,5 @@
+VIEW PanApproval_approversKeys AS SELECT
+  approversKeys_0.PAN_Number,
+  approversKeys_0.approver,
+  approversKeys_0.keyy
+FROM proj_schema_approversKeys AS approversKeys_0

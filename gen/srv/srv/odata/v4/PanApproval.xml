@@ -28,6 +28,7 @@
         </EntitySet>
         <EntitySet Name="PAN_Payment_Method_Drop_APR" EntityType="PanApproval.PAN_Payment_Method_Drop_APR"/>
         <EntitySet Name="vendorTaxDetails_APR" EntityType="PanApproval.vendorTaxDetails_APR"/>
+        <EntitySet Name="approversKeys" EntityType="PanApproval.approversKeys"/>
         <FunctionImport Name="sendforapproval" Function="PanApproval.sendforapproval"/>
         <FunctionImport Name="InsertData" Function="PanApproval.InsertData"/>
         <FunctionImport Name="finalApprove" Function="PanApproval.finalApprove"/>
@@ -197,7 +198,7 @@
         <Property Name="Vendor_CE_Score" Type="Edm.String"/>
         <Property Name="Vendor_CE_Date" Type="Edm.Date"/>
         <Property Name="Vendor_PE_Score" Type="Edm.String"/>
-        <Property Name="Vendor_PE_Date" Type="Edm.String"/>
+        <Property Name="Vendor_PE_Date" Type="Edm.Date"/>
         <Property Name="Vendor_Contact_PersonDASH1" Type="Edm.String"/>
         <Property Name="Vendor_Contact_PersonDASH2" Type="Edm.String"/>
         <Property Name="Technical_Committee_who_cleared_the_proposal" Type="Edm.String"/>
@@ -346,6 +347,16 @@
         <Property Name="idd" Type="Edm.Guid" Nullable="false"/>
         <Property Name="name" Type="Edm.String"/>
         <Property Name="value" Type="Edm.String"/>
+      </EntityType>
+      <EntityType Name="approversKeys">
+        <Key>
+          <PropertyRef Name="PAN_Number"/>
+          <PropertyRef Name="approver"/>
+          <PropertyRef Name="keyy"/>
+        </Key>
+        <Property Name="PAN_Number" Type="Edm.String" Nullable="false"/>
+        <Property Name="approver" Type="Edm.String" Nullable="false"/>
+        <Property Name="keyy" Type="Edm.String" Nullable="false"/>
       </EntityType>
       <Function Name="sendforapproval" IsBound="false" IsComposable="false">
         <Parameter Name="data" Type="Edm.String"/>

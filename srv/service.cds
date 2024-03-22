@@ -41,6 +41,7 @@ service PanApproval {
  entity PAN_Payment_Method_Drop_APR as projection on my.PAN_Payment_Method_Drop;
  entity PAN_Comments_APR as projection on my.PAN_Comments;
  entity vendorTaxDetails_APR as projection on my.vendorTaxDetails;
+ entity approversKeys as projection on my.approversKeys;
   function sendforapproval(data:String) returns LargeString;
  function InsertData(ID:String) returns String;
  function finalApprove(data:String) returns String;

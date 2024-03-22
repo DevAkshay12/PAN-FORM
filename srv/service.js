@@ -6,113 +6,114 @@ const axios = require('axios');
 module.exports = cds.service.impl(async function () {
     let {
         attachments,tab1,tab2,tab3,vendor_data,Fvendor_responseoo,PAYMENT_TERM_DETAILS,WORKFLOW_HISTORY,PAN_PRICE_DETAILS,PAN_Payment_Method_Drop,PAN_Comments ,
-        PAN_Details_APR,PAN_WEB_EVENT_APR,PAN_TYPE_APR,PAN_vendor_data_APR,PAN_vendor_response_APR,PAN_PAYMENT_TERM_DETAILS_APR,PAN_PRICE_DETAILS_APR,PAN_WORKFLOW_HISTORY_APR,PAN_attachments_APR,PAN_Payment_Method_Drop_APR,PAN_Comments_APR
+        approversKeys,PAN_Details_APR,PAN_WEB_EVENT_APR,PAN_TYPE_APR,PAN_vendor_data_APR,PAN_vendor_response_APR,PAN_PAYMENT_TERM_DETAILS_APR,PAN_PRICE_DETAILS_APR,PAN_WORKFLOW_HISTORY_APR,PAN_attachments_APR,PAN_Payment_Method_Drop_APR,PAN_Comments_APR
     } = this.entities;
 
 const AribaSrv = await cds.connect.to('ARIBA_DEV');
 const c1re = await cds.connect.to('iflow1');
+const c2re = await cds.connect.to('iflow2');
 
-this.before('READ',tab1,async (req)=>{ 
-    var vcap = JSON.parse(process.env.VCAP_SERVICES);
-        var panformDest;
-        // let auth = req?.headers?.authorization;
-        // console.log(auth);
-        // console.log(vcap);
-        vcap.destination.forEach((dest)=>{
-            if (dest?.name != undefined && dest?.name == "Plantmappingfinal-destination-service"){
-                panformDest = dest;
-            }
-        });
-        // panformDest = vcap.destination[0];
-        console.log(panformDest);
+// this.before('READ',tab1,async (req)=>{ 
+//     var vcap = JSON.parse(process.env.VCAP_SERVICES);
+//         var panformDest;
+//         // let auth = req?.headers?.authorization;
+//         // console.log(auth);
+//         // console.log(vcap);
+//         vcap.destination.forEach((dest)=>{
+//             if (dest?.name != undefined && dest?.name == "Plantmappingfinal-destination-service"){
+//                 panformDest = dest;
+//             }
+//         });
+//         // panformDest = vcap.destination[0];
+//         console.log(panformDest);
 
 
-        var tokenurl = panformDest.credentials.url + "/oauth/token?grant_type=client_credentials";
-        var basicAuth = panformDest.credentials.clientid + ":" + panformDest.credentials.clientsecret;
-        var basicAuth = btoa(basicAuth);
-        var basicStr = "Basic " + basicAuth;
+//         var tokenurl = panformDest.credentials.url + "/oauth/token?grant_type=client_credentials";
+//         var basicAuth = panformDest.credentials.clientid + ":" + panformDest.credentials.clientsecret;
+//         var basicAuth = btoa(basicAuth);
+//         var basicStr = "Basic " + basicAuth;
          
 
-        var axiosTokenResp = await axios.request({
-            url: tokenurl,
-            method :'get',
-            headers:{
-                Authorization : basicStr
-            }
-        })
-        var accesstoken = axiosTokenResp.data.access_token;
+//         var axiosTokenResp = await axios.request({
+//             url: tokenurl,
+//             method :'get',
+//             headers:{
+//                 Authorization : basicStr
+//             }
+//         })
+//         var accesstoken = axiosTokenResp.data.access_token;
         
-        var authDest = axiosTokenResp.data.token_type + " " + accesstoken;
-        console.log(authDest);
-        console.log(panformDest.credentials);
+//         var authDest = axiosTokenResp.data.token_type + " " + accesstoken;
+//         console.log(authDest);
+//         console.log(panformDest.credentials);
 
-        var destinationurl = panformDest.credentials.uri + "/destination-configuration/v1/destinations/Plantmappingfinal-srv-api"
-        console.log(destinationurl);
-        var destinationResp = await axios.request({
-            url: destinationurl,
-            method:'get',
-            headers:{
-                Authorization : authDest
-            }
-        })
+//         var destinationurl = panformDest.credentials.uri + "/destination-configuration/v1/destinations/Plantmappingfinal-srv-api"
+//         console.log(destinationurl);
+//         var destinationResp = await axios.request({
+//             url: destinationurl,
+//             method:'get',
+//             headers:{
+//                 Authorization : authDest
+//             }
+//         })
 
-        var baseSrvUrl = destinationResp?.data?.destinationConfiguration?.URL;
-        // let pan = await SELECT.from(tab1);
-//         try{
+//         var baseSrvUrl = destinationResp?.data?.destinationConfiguration?.URL;
+//         // let pan = await SELECT.from(tab1);
+// //         try{
+// //         // pan.forEach(async element => {
+// //         for(let i =0;i<pan.length;i++){
+// //         if(pan[i].PAN_Number!='pan12'){
+// //         var reqUrl = baseSrvUrl + `/odata/v4/my/plant/${pan[i].Plant_Code}`
+// //         var srvResp = await axios.request({
+// //             url: reqUrl,
+// //             method: 'get'
+// //         });
+// //         console.log(srvResp);
+// //     }
+// //     }
+// // }catch(error){
+// //     console.log(error);
+// // }
+
+//         // console.log(srvResp?.data?.value[1]);
+//     // })
+//     // quality domain
+//     // https://tata-projects-limited-tpl-ariba-uat-dzu885iy-tpl-aruat-48c5f432.cfapps.eu10-004.hana.ondemand.com
+//     // test domain
+//     // https://tata-projects-limited-btp-dev-0or0hi20-dev-space-plantm790a9887.cfapps.eu10-004.hana.ondemand.com
+//     try {
+//         let pan = await SELECT.from(tab1);
 //         // pan.forEach(async element => {
 //         for(let i =0;i<pan.length;i++){
-//         if(pan[i].PAN_Number!='pan12'){
-//         var reqUrl = baseSrvUrl + `/odata/v4/my/plant/${pan[i].Plant_Code}`
-//         var srvResp = await axios.request({
-//             url: reqUrl,
-//             method: 'get'
-//         });
-//         console.log(srvResp);
-//     }
-//     }
-// }catch(error){
-//     console.log(error);
-// }
-
-        // console.log(srvResp?.data?.value[1]);
-    // })
-    // quality domain
-    // https://tata-projects-limited-tpl-ariba-uat-dzu885iy-tpl-aruat-48c5f432.cfapps.eu10-004.hana.ondemand.com
-    // test domain
-    // https://tata-projects-limited-btp-dev-0or0hi20-dev-space-plantm790a9887.cfapps.eu10-004.hana.ondemand.com
-    try {
-        let pan = await SELECT.from(tab1);
-        // pan.forEach(async element => {
-        for(let i =0;i<pan.length;i++){
-            if(pan[i].Plant_Code){
-                var reqUrl = baseSrvUrl + `/odata/v4/my/plant/${pan[i].Plant_Code}`
+//             if(pan[i].Plant_Code){
+//                 var reqUrl = baseSrvUrl + `/odata/v4/my/plant/${pan[i].Plant_Code}`
                 
-                try{
-                    var srvResp = await axios.request({
-                        url: reqUrl,
-                        method: 'get'
-                    });
-                    console.log(srvResp);
-            // console.log();
-            if(srvResp){
-            let srv = await UPDATE(tab1,pan[i].PAN_Number).with({SBG:`${srvResp.data.SBG}`,SBU:`${srvResp.data.SBU}`});  
-            console.log(srv);
-            }
-                }catch(error){ 
-                    await UPDATE(tab1,pan[i].PAN_Number).with({SBG:null,SBU:null})   
-                    console.log(error.message);
-                }
-            }
-        // }); 
-        }
+//                 try{
+//                     var srvResp = await axios.request({
+//                         url: reqUrl,
+//                         method: 'get'
+//                     });
+//                     console.log(srvResp);
+//             // console.log();
+//             if(srvResp){
+//             let srv = await UPDATE(tab1,pan[i].PAN_Number).with({SBG:`${srvResp.data.SBG}`,SBU:`${srvResp.data.SBU}`});  
+//             console.log(srv);
+//             }
+//                 }catch(error){ 
+//                     await UPDATE(tab1,pan[i].PAN_Number).with({SBG:null,SBU:null})   
+//                     console.log(error.message);
+//                 }
+//             }
+//         // }); 
+//         }
         
-    } catch (error) {
-        console.log(error);
-    }
+//     } catch (error) {
+//         console.log(error);
+//     }
 
-//   return req;
+// //   return req;
 
-});
+// });
 
 // this.on('CREATE',PAYMENT_TERM_DETAILS.drafts,async(req)=>{
 //     let data = 'anything';
@@ -270,41 +271,41 @@ this.on('InsertData',async (req)=>{
         await UPDATE(tab1,resp1[i].PAN_Number).with({
             'statusInd':ind
         });
-        if(resp1[i].status=='New'){
-            let hist = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${resp1[i].PAN_Number}`;
-            if(hist.length!=0){
-                let del = await DELETE.from(WORKFLOW_HISTORY).where`PAN_Number=${resp1[i].PAN_Number}`;
-                console.log(del);
-            }
+        // if(resp1[i].status=='New'){
+        //     let hist = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${resp1[i].PAN_Number}`;
+        //     if(hist.length!=0){
+        //         let del = await DELETE.from(WORKFLOW_HISTORY).where`PAN_Number=${resp1[i].PAN_Number}`;
+        //         console.log(del);
+        //     }
             
-                // let url = "/opu/odata/sap/ZARB_BTP_APPROVAL_SRV/fimpAprovals?plant='"+resp2['Plant_Code']+"'&docType='"+resp2["Order_Type_OR_Document_tyFuuidpe"]+"'&amount='"+resp2["Final_proposed_Value"]+"'&purGroup='"+resp2["BUORPurchasing_Group"]+"'";
-                let url = "/opu/odata/sap/ZARB_BTP_APPROVAL_SRV/fimpAprovals?plant=%27"+resp2['Plant_Code']+"%27&docType=%27"+resp2["Order_Type_OR_Document_tyFuuidpe"]+"%27&amount=%27"+resp2["Final_proposed_Value"]+"%27&purGroup=%27"+resp2["BUORPurchasing_Group"]+"%27";
-                // let url = "/opu/odata/sap/ZARB_BTP_APPROVAL_SRV/fimpAprovals?plant=%27 %27&plantCode=%27"+resp2["Plant_Code"]+"%27&sbg=%27"+resp2["SBG"]+"%27&sub=%27"+resp2["SBU"]+"%27";
-                let response = await AribaSrv.get(url);
-                console.log(response);
-                for(j=0;j<response.length;j++){
-                    let a=[];
-                    let b={
-                        "idd":j.toString(),
-                        "PAN_Number":resp1[i].PAN_Number,
-                        "Employee_ID" : response[j].empId,
-                        "level" : response[j].level,
-                        "Approved_by": "",
-                        "Employee_Name" : response[j].empName,
-                            "Title" : response[j].title,                         
-                            "Notification_Status" : "false",
-                            "Result" : "",
-                            "Begin_DateAND_Time": "",
-                            "End_DateAND_Time": "",
-                            "Days_Taken" : "",
-                            "Remarks" : ""
-                    }
-                    a.push(b);
-                    await INSERT.into(WORKFLOW_HISTORY).entries(a);
-                // }
+        //         // let url = "/opu/odata/sap/ZARB_BTP_APPROVAL_SRV/fimpAprovals?plant='"+resp2['Plant_Code']+"'&docType='"+resp2["Order_Type_OR_Document_tyFuuidpe"]+"'&amount='"+resp2["Final_proposed_Value"]+"'&purGroup='"+resp2["BUORPurchasing_Group"]+"'";
+        //         let url = "/opu/odata/sap/ZARB_BTP_APPROVAL_SRV/fimpAprovals?plant=%27"+resp2['Plant_Code']+"%27&docType=%27"+resp2["Order_Type_OR_Document_tyFuuidpe"]+"%27&amount=%27"+resp2["Final_proposed_Value"]+"%27&purGroup=%27"+resp2["BUORPurchasing_Group"]+"%27";
+        //         // let url = "/opu/odata/sap/ZARB_BTP_APPROVAL_SRV/fimpAprovals?plant=%27 %27&plantCode=%27"+resp2["Plant_Code"]+"%27&sbg=%27"+resp2["SBG"]+"%27&sub=%27"+resp2["SBU"]+"%27";
+        //         let response = await AribaSrv.get(url);
+        //         console.log(response);
+        //         for(j=0;j<response.length;j++){
+        //             let a=[];
+        //             let b={
+        //                 "idd":j.toString(),
+        //                 "PAN_Number":resp1[i].PAN_Number,
+        //                 "Employee_ID" : response[j].empId,
+        //                 "level" : response[j].level,
+        //                 "Approved_by": "",
+        //                 "Employee_Name" : response[j].empName,
+        //                     "Title" : response[j].title,                         
+        //                     "Notification_Status" : "false",
+        //                     "Result" : "",
+        //                     "Begin_DateAND_Time": "",
+        //                     "End_DateAND_Time": "",
+        //                     "Days_Taken" : "",
+        //                     "Remarks" : ""
+        //             }
+        //             a.push(b);
+        //             await INSERT.into(WORKFLOW_HISTORY).entries(a);
+        //         // }
                 
-            }
-        }
+        //     }
+        // }
         
     }
     return "success";
@@ -398,6 +399,7 @@ this.on('InsertData',async (req)=>{
     // // return req;
     // });
     this.on('sendforapproval',async(req)=>{ 
+        var lev1approvers = [];
         let auth = req?.headers?.authorization;
         let response;
         if(auth != undefined){
@@ -417,8 +419,59 @@ this.on('InsertData',async (req)=>{
         console.log(decoded);
         console.log(req.data);
         let data = JSON.parse(req.data.data);
+        let wf = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${data.PAN_Number}`;
+        if(wf.length == 0)
+        return "wfempty";
+
+
         let resp1 = await SELECT.from(tab1).where`PAN_Number=${data.PAN_Number}`
-        if(resp1[0].status=='Justification Needed'){
+        if(resp1[0].status=='Justification Needed'){debugger
+
+
+////////////////////////
+let wid = await SELECT.from(tab1).where`PAN_Number = ${data.PAN_Number}`;
+wid = wid[0];
+try {
+    debugger            
+    var client = 'sb-b63ad6bb-f367-4a28-83ea-cd5bd2a44b8e!b262976|xsuaa!b49390';
+    var secret = '531c7d68-b3a1-4140-8452-5b47d8ea93b7$QAQYW_9YjcNyUzqzaqgLOyMYXKLLnLZWP63Llc9WJqs=';
+    var auth1 = Buffer.from(client+':'+secret,'utf-8').toString('base64');
+    var response1 = await axios.request('https://77526da0trial.authentication.us10.hana.ondemand.com/oauth/token?grant_type=client_credentials',
+    {
+        method:'POST',
+        headers:{
+            'Authorization':'Basic '+auth1
+        }
+    });
+    console.log(response1);
+    
+    var response12= await axios.get(`https://spa-api-gateway-bpi-us-prod.cfapps.us10.hana.ondemand.com/workflow/rest/v1/workflow-instances?$filter=parentInstanceId eq '${wid.Sap_workitem_id}'`,
+    {
+       headers:{
+            'Authorization':'Bearer '+response1.data.access_token,
+        }
+    });
+    console.log(wid.Sap_workitem_id)
+    var subprocessid = response12.data.filter(item=> item.parentInstanceId == wid.Sap_workitem_id && item.status == 'RUNNING')
+    // let filterdresp = instancearr
+    console.log(response12);
+    console.log(subprocessid);
+    lev1approvers = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number = ${data.PAN_Number} and Remarks = 'pending'`;
+    console.log(lev1approvers);
+    for(let i=0;i<lev1approvers.length;i++){
+        let b = {approver :lev1approvers[i].Employee_ID ,keyy :subprocessid[0].id,PAN_Number:data.PAN_Number}
+        console.log("before app keys" + subprocessid[0].id)
+        await c2re.post("/approversKeys",b);     
+        console.log(b)   
+    }
+    
+    debugger
+            } catch (error) {
+                debugger
+            }
+////////////////////////
+
+
             response=await UPDATE(tab1,data.PAN_Number).with({
                 "status":'Pending for Approval'
             });
@@ -475,6 +528,7 @@ this.on('InsertData',async (req)=>{
         let data1 = await SELECT.from(tab2).where`PAN_Number=${data.PAN_Number}`;
         let data2 = await SELECT.from(tab3).where`PAN_Number=${data.PAN_Number}`;
         let data3 = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${data.PAN_Number}`;
+        
         // for(let i = 0;i<data3.length;i++){
         //     let data3c = await SELECT.from(WORKFLOW_HISTORY_EMP).where`PAN_Number=${req.data.data} and level=${data3[i].idd}`;
         //     data3[i] ={...data,WFtoWFE:data3c};
@@ -512,36 +566,117 @@ this.on('InsertData',async (req)=>{
             "panToAttachNavi" :main_data,
             "json":JSON.stringify(data_m)
         }
-        try{
-        
-        response = await AribaSrv.post('/opu/odata/sap/ZARB_BTP_ATTACHMENT_SRV/panHeaderSet',body);
-        console.log(response);
-        console.log("resssssssssssssssssssssssssssssssssssssssssssssssssssss");
-        }catch(error){
-            return "error"
+        // try{
+        //////dhanush gangatkar
+
+        let up={
+            "Begin_DateAND_Time": currentDate1.toString(),
+            "Remarks": null
         }
+        // let key = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${data.PAN_Number}`
+        let key=await c2re.get(`/PAN_WORKFLOW_HISTORY_APR?$filter=PAN_Number eq '${data.PAN_Number}'`);
+        var wh;
+        key=key.value;
+        for(let i=0;i<key.length;i++){
+        // wh=await UPDATE(WORKFLOW_HISTORY,({
+        //     "idd":key[i].idd,
+        //     "PAN_Number":data.PAN_Number
+        // })).with(up);
+        let wh=await c2re.patch(`/PAN_WORKFLOW_HISTORY_APR(PAN_Number='${data.PAN_Number}',idd='${key[i].idd}')`,up);
+
+        // await UPDATE(WORKFLOW_HISTORY,({
+        //     "idd":key[i].idd,
+        //     "PAN_Number":data.PAN_Number
+        // })).with({"Remarks": "pending"}).where`level = '1'`;
+        if(key[i].level=='1'){
+        await c2re.patch(`/PAN_WORKFLOW_HISTORY_APR(PAN_Number='${data.PAN_Number}',idd='${key[i].idd}')`,{"Remarks": "pending"});
+        lev1approvers.push(key[i].Employee_ID);
+    }
+    }
+        let keyyy=await c2re.get(`/PAN_WORKFLOW_HISTORY_APR?$filter=PAN_Number eq '${data.PAN_Number}'`);
+        // let keyyy = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${data.PAN_Number}`
+//////dhanush gangatkar
+        try {
+debugger            
+var client = 'sb-b63ad6bb-f367-4a28-83ea-cd5bd2a44b8e!b262976|xsuaa!b49390';
+var secret = '531c7d68-b3a1-4140-8452-5b47d8ea93b7$QAQYW_9YjcNyUzqzaqgLOyMYXKLLnLZWP63Llc9WJqs=';
+var auth1 = Buffer.from(client+':'+secret,'utf-8').toString('base64');
+var response1 = await axios.request('https://77526da0trial.authentication.us10.hana.ondemand.com/oauth/token?grant_type=client_credentials',
+{
+    method:'POST',
+    headers:{
+        'Authorization':'Basic '+auth1
+    }
+});
+console.log(response1);
+var bodyy = JSON.parse(JSON.stringify({
+     "definitionId": "us10.77526da0trial.dbgnfaapprovalcopy.nFAApproval",
+    "context": {
+        "input": `PAN_Number eq '${data.PAN_Number}' and Remarks eq 'pending'`
+    }
+}));
+debugger
+console.log("before process start" );
+console.log(bodyy);
+try {
+    var response11= await axios.post('https://spa-api-gateway-bpi-us-prod.cfapps.us10.hana.ondemand.com/workflow/rest/v1/workflow-instances',bodyy,
+    {
+       headers:{
+            'Authorization':'Bearer '+response1.data.access_token,
+        }
+    });    
+} catch (error) {
+    console.log(error.error.message)
+}
+
+debugger
+await new Promise(resolve => setTimeout(resolve, 3000));
+console.log("before childid");
+var response12= await axios.get(`https://spa-api-gateway-bpi-us-prod.cfapps.us10.hana.ondemand.com/workflow/rest/v1/workflow-instances?$filter=parentInstanceId eq '${response11.data.id}'`,
+{
+   headers:{
+        'Authorization':'Bearer '+response1.data.access_token,
+    }
+});
+console.log(response11.data.id)
+var subprocessid = response12.data.filter(item=> item.parentInstanceId == response11.data.id && item.status == 'RUNNING')
+// let filterdresp = instancearr
+console.log(response12);
+console.log(subprocessid);
+console.log(lev1approvers);
+
+for(let i=0;i<lev1approvers.length;i++){
+    let b = {approver :lev1approvers[i] ,keyy :subprocessid[0].id,PAN_Number:data.PAN_Number}
+    console.log("before app keys" + subprocessid[0].id)
+    await c2re.post("/approversKeys",b);     
+    console.log(b)   
+}
+
+debugger
+        } catch (error) {
+            debugger
+        }
+debugger
+
+
+        // response = await AribaSrv.post('/opu/odata/sap/ZARB_BTP_ATTACHMENT_SRV/panHeaderSet',body);
+        // console.log(response);
+        // console.log("resssssssssssssssssssssssssssssssssssssssssssssssssssss");
+        // }catch(error){
+        //     return "error"
+        // }
+        console.log("cannot read error"+response11.data.id);
         let srv = await UPDATE(tab1,data.PAN_Number).with({
             "status":"Pending for Approval",
-            "total_levels_of_approval":response["totalLevel"],
-            "Current_level_of_approval":response["currentLevel"],
-            "Sap_workitem_id":response["workitemId"],
+            // "total_levels_of_approval":response["totalLevel"],
+            // "Current_level_of_approval":response["currentLevel"],
+            "Sap_workitem_id":response11.data.id,
             "statusInd":2,
             "submitted_by":decoded['user_name'],
             "created_by":decoded['user_name'],
             "submitted_date":currentDate1
         });
-        let up={
-            "Begin_DateAND_Time": currentDate1.toString(),
-            "Remarks": currentDate1.toString()
-        }
-        let key = await SELECT.from(WORKFLOW_HISTORY).where`PAN_Number=${data.PAN_Number}`
-        var wh;
-        for(let i=0;i<key.length;i++){
-        wh=await UPDATE(WORKFLOW_HISTORY,({
-            "idd":key[i].idd,
-            "PAN_Number":data.PAN_Number
-        })).with(up);
-        }
+   
     }
         // let comm = await SELECT.from(tab1).where`PAN_Number = ${data.PAN_Number}`
         // var commentss = null;
@@ -566,7 +701,7 @@ this.on('InsertData',async (req)=>{
         // // await c5re.put(`/tab1/${data.PAN_Number}`,change_stat.value[0]);
         // let respbody ={
         //     "pankey":data.PAN_Number,
-        //     "buttonClicked":data.buttonclicked,
+        //     "buttonClicked":data.buttonclicked,thus
         //     "flag":"X",
         //     "json":JSON.stringify(data_m)
         // }
